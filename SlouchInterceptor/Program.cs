@@ -10,7 +10,10 @@ namespace Mironworks.SlouchInterceptor
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+
+			var mainForm = new MainForm { Visible = false };
+
+			Application.Run();
 		}
 	}
 }

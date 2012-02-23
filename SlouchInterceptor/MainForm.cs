@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Mironworks.SlouchInterceptor
 {
@@ -7,6 +8,19 @@ namespace Mironworks.SlouchInterceptor
 		public MainForm()
 		{
 			InitializeComponent();
+		}
+
+		private void NotifyIconClick(object sender, EventArgs e)
+		{
+			var mouseEvent = (MouseEventArgs) e;
+
+			if (mouseEvent.Button == MouseButtons.Left)
+				Visible = !Visible;
+		}
+
+		private void ExitToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			Application.Exit();
 		}
 	}
 }

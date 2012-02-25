@@ -22,5 +22,29 @@ namespace Mironworks.SlouchInterceptor.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int StartInterval {
+            get {
+                return ((int)(this["StartInterval"]));
+            }
+            set {
+                this["StartInterval"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int StartDuration {
+            get {
+                return ((int)(this["StartDuration"]));
+            }
+            set {
+                this["StartDuration"] = value;
+            }
+        }
     }
 }

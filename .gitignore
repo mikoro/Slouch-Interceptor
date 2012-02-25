@@ -1,5 +1,6 @@
 *.user
 *.suo
+*.msi
 bin/
 obj/
 _ReSharper*

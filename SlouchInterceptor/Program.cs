@@ -5,8 +5,8 @@
 
 	internal class Program
 	{
-		private OverlayForm overlayForm;
 		private NotifyIconForm notifyIconForm;
+		private OverlayForm overlayForm;
 
 		[STAThread]
 		private static void Main()
@@ -21,7 +21,7 @@
 
 			overlayForm = new OverlayForm();
 			notifyIconForm = new NotifyIconForm(overlayForm);
-			
+
 			Application.Run();
 		}
 	}

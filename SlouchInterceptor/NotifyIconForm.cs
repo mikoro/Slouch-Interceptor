@@ -1,6 +1,8 @@
 ﻿namespace Mironworks.SlouchInterceptor
 {
 	using System;
+	using System.ComponentModel;
+	using System.Reflection;
 	using System.Windows.Forms;
 
 	public partial class NotifyIconForm : Form
@@ -14,12 +16,29 @@
 			InitializeComponent();
 		}
 
-		private void StartToolStripMenuItemClick(object sender, EventArgs e)
+		private void NotifyIconMouseUp(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				MethodInfo mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
+				mi.Invoke(notifyIcon, null);
+			}
+		}
+
+		private void ContextMenuStripOpening(object sender, CancelEventArgs e)
+		{
+			startStopToolStripMenuItem.Text = overlayForm.Visible ? "Stop" : "Start";
+		}
+
+		private void StartStopToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			if (overlayForm == null || overlayForm.IsDisposed)
 				overlayForm = new OverlayForm();
 
-			overlayForm.Show();
+			if (!overlayForm.Visible)
+				overlayForm.Show();
+			else
+				overlayForm.Close();
 		}
 
 		private void ConfigureToolStripMenuItemClick(object sender, EventArgs e)

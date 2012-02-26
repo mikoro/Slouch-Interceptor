@@ -2,10 +2,13 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Mironworks.SlouchInterceptor.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Interval" Type="System.Int32" Scope="User">
+    <Setting Name="OverlayShowInterval" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">45</Value>
     </Setting>
-    <Setting Name="Duration" Type="System.Int32" Scope="User">
+    <Setting Name="OverlayShowDuration" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">180</Value>
+    </Setting>
+    <Setting Name="IdleResetThreshold" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">180</Value>
     </Setting>
   </Settings>

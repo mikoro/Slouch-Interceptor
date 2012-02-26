@@ -44,6 +44,7 @@
 			this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
 			this.notifyIcon.Text = "Slouch Interceptor";
 			this.notifyIcon.Visible = true;
+			this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NotifyIconMouseMove);
 			this.notifyIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIconMouseUp);
 			// 
 			// contextMenuStrip
@@ -53,27 +54,28 @@
             this.configureToolStripMenuItem,
             this.exitToolStripMenuItem});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(128, 70);
+			this.contextMenuStrip.Size = new System.Drawing.Size(153, 92);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripOpening);
 			// 
 			// startStopToolStripMenuItem
 			// 
 			this.startStopToolStripMenuItem.Name = "startStopToolStripMenuItem";
-			this.startStopToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+			this.startStopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.startStopToolStripMenuItem.Text = "StartStop";
 			this.startStopToolStripMenuItem.Click += new System.EventHandler(this.StartStopToolStripMenuItemClick);
 			// 
 			// configureToolStripMenuItem
 			// 
+			this.configureToolStripMenuItem.Enabled = false;
 			this.configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-			this.configureToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+			this.configureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.configureToolStripMenuItem.Text = "Configure";
 			this.configureToolStripMenuItem.Click += new System.EventHandler(this.ConfigureToolStripMenuItemClick);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 

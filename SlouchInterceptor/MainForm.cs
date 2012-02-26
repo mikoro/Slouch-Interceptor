@@ -4,15 +4,71 @@
 	using System.ComponentModel;
 	using System.Reflection;
 	using System.Windows.Forms;
+	using Mironworks.SlouchInterceptor.Properties;
 
 	public partial class MainForm : Form
 	{
+		private readonly Timer showOverlayTimer = new Timer();
 		private ConfigurationForm configurationForm = new ConfigurationForm();
 		private OverlayForm overlayForm = new OverlayForm();
+		private DateTime showOverlayTimerTickTime = DateTime.Now;
 
 		public MainForm()
 		{
 			InitializeComponent();
+
+			showOverlayTimer.Interval = (int)TimeSpan.FromMinutes(Settings.Default.Interval).TotalMilliseconds;
+			showOverlayTimer.Tick += ShowOverlayTimerTick;
+
+			StartShowOverlayTimer();
+
+			notifyIcon.ShowBalloonTip(0, "Slouch Interceptor", "Slouch Interceptor is running", ToolTipIcon.None);
+
+			overlayForm.FormClosed += OverlayFormOnFormClosed;
+		}
+
+		private void CheckOverlayForm()
+		{
+			if (overlayForm.IsDisposed)
+			{
+				overlayForm.FormClosed -= OverlayFormOnFormClosed;
+				overlayForm = new OverlayForm();
+				overlayForm.FormClosed += OverlayFormOnFormClosed;
+			}
+		}
+
+		private void ShowOverlayForm()
+		{
+			overlayForm.Show();
+			showOverlayTimer.Stop();
+			showOverlayTimerTickTime = DateTime.Now;
+		}
+
+		private void StartShowOverlayTimer()
+		{
+			showOverlayTimer.Start();
+			showOverlayTimerTickTime = DateTime.Now + TimeSpan.FromMilliseconds(showOverlayTimer.Interval);
+		}
+
+		private void ShowOverlayTimerTick(object sender, EventArgs e)
+		{
+			CheckOverlayForm();
+			ShowOverlayForm();
+		}
+
+		private void OverlayFormOnFormClosed(object sender, FormClosedEventArgs e)
+		{
+			StartShowOverlayTimer();
+		}
+
+		private void NotifyIconMouseMove(object sender, MouseEventArgs e)
+		{
+			var t = new TimeSpan(0);
+
+			if (showOverlayTimerTickTime >= DateTime.Now)
+				t = showOverlayTimerTickTime - DateTime.Now;
+
+			notifyIcon.Text = string.Format("Slouch Interceptor\nNext break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
 		}
 
 		private void NotifyIconMouseUp(object sender, MouseEventArgs e)
@@ -31,11 +87,10 @@
 
 		private void StartStopToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			if (overlayForm.IsDisposed)
-				overlayForm = new OverlayForm();
+			CheckOverlayForm();
 
 			if (!overlayForm.Visible)
-				overlayForm.Show();
+				ShowOverlayForm();
 			else
 				overlayForm.Close();
 		}

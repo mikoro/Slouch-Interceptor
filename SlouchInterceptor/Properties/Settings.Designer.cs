@@ -25,25 +25,25 @@ namespace Mironworks.SlouchInterceptor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30")]
-        public int StartInterval {
+        [global::System.Configuration.DefaultSettingValueAttribute("45")]
+        public int Interval {
             get {
-                return ((int)(this["StartInterval"]));
+                return ((int)(this["Interval"]));
             }
             set {
-                this["StartInterval"] = value;
+                this["Interval"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int StartDuration {
+        [global::System.Configuration.DefaultSettingValueAttribute("180")]
+        public int Duration {
             get {
-                return ((int)(this["StartDuration"]));
+                return ((int)(this["Duration"]));
             }
             set {
-                this["StartDuration"] = value;
+                this["Duration"] = value;
             }
         }
     }

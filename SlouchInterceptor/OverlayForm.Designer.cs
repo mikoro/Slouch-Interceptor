@@ -28,8 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OverlayForm));
 			this.pictureBox = new System.Windows.Forms.PictureBox();
+			this.timerCountdown = new System.Windows.Forms.Timer(this.components);
+			this.labelTimeRemaining = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -46,6 +49,23 @@
 			this.pictureBox.TabIndex = 0;
 			this.pictureBox.TabStop = false;
 			// 
+			// timerCountdown
+			// 
+			this.timerCountdown.Interval = 1000;
+			this.timerCountdown.Tick += new System.EventHandler(this.TimerCountdownTick);
+			// 
+			// labelTimeRemaining
+			// 
+			this.labelTimeRemaining.Font = new System.Drawing.Font("Verdana", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelTimeRemaining.ForeColor = System.Drawing.Color.LightGray;
+			this.labelTimeRemaining.Location = new System.Drawing.Point(0, 0);
+			this.labelTimeRemaining.Margin = new System.Windows.Forms.Padding(0);
+			this.labelTimeRemaining.Name = "labelTimeRemaining";
+			this.labelTimeRemaining.Size = new System.Drawing.Size(243, 78);
+			this.labelTimeRemaining.TabIndex = 1;
+			this.labelTimeRemaining.Text = "00:00";
+			this.labelTimeRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// OverlayForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -53,6 +73,7 @@
 			this.BackColor = System.Drawing.Color.Black;
 			this.ClientSize = new System.Drawing.Size(800, 800);
 			this.ControlBox = false;
+			this.Controls.Add(this.labelTimeRemaining);
 			this.Controls.Add(this.pictureBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -65,8 +86,8 @@
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Slouch Interceptor";
-			this.TopMost = true;
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+			this.Shown += new System.EventHandler(this.OverlayFormShown);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			this.ResumeLayout(false);
 
@@ -75,6 +96,8 @@
 		#endregion
 
 		private System.Windows.Forms.PictureBox pictureBox;
+		private System.Windows.Forms.Timer timerCountdown;
+		private System.Windows.Forms.Label labelTimeRemaining;
 	}
 }
 

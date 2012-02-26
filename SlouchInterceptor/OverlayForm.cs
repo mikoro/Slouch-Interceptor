@@ -7,7 +7,7 @@
 
 	public partial class OverlayForm : Form
 	{
-		private int secondsRemaining = Settings.Default.Duration;
+		private int secondsRemaining = Settings.Default.OverlayShowDuration;
 
 		public OverlayForm()
 		{

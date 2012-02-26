@@ -17,7 +17,7 @@
 		{
 			InitializeComponent();
 
-			showOverlayTimer.Interval = (int)TimeSpan.FromMinutes(Settings.Default.Interval).TotalMilliseconds;
+			showOverlayTimer.Interval = (int)TimeSpan.FromMinutes(Settings.Default.OverlayShowInterval).TotalMilliseconds;
 			showOverlayTimer.Tick += ShowOverlayTimerTick;
 
 			StartShowOverlayTimer();
@@ -54,6 +54,15 @@
 		{
 			CheckOverlayForm();
 			ShowOverlayForm();
+		}
+
+		private void TimerCheckIdleTick(object sender, EventArgs e)
+		{
+			if (LastInputInfo.GetLastInputTime() >= Settings.Default.IdleResetThreshold)
+			{
+				showOverlayTimer.Stop();
+				StartShowOverlayTimer();
+			}
 		}
 
 		private void OverlayFormOnFormClosed(object sender, FormClosedEventArgs e)

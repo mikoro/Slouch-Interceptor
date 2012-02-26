@@ -26,24 +26,36 @@ namespace Mironworks.SlouchInterceptor.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("45")]
-        public int Interval {
+        public int OverlayShowInterval {
             get {
-                return ((int)(this["Interval"]));
+                return ((int)(this["OverlayShowInterval"]));
             }
             set {
-                this["Interval"] = value;
+                this["OverlayShowInterval"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("180")]
-        public int Duration {
+        public int OverlayShowDuration {
             get {
-                return ((int)(this["Duration"]));
+                return ((int)(this["OverlayShowDuration"]));
             }
             set {
-                this["Duration"] = value;
+                this["OverlayShowDuration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("180")]
+        public int IdleResetThreshold {
+            get {
+                return ((int)(this["IdleResetThreshold"]));
+            }
+            set {
+                this["IdleResetThreshold"] = value;
             }
         }
     }

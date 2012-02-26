@@ -64,6 +64,7 @@
     <Compile Include="ConfigurationForm.Designer.cs">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LastInputInfo.cs" />
     <Compile Include="OverlayForm.cs">
       <SubType>Form</SubType>
     </Compile>

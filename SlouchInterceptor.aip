@@ -8,10 +8,10 @@
     <ROW Property="ARPPRODUCTICON" Value="SlouchInterceptor.exe" Type="8"/>
     <ROW Property="MSIFASTINSTALL" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="Manufacturer" Value="Mironworks" ValueLocId="*"/>
-    <ROW Property="ProductCode" Value="1033:{5D6BEA3D-4BCE-4C32-9B8A-965320DC1AEA} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{1643825A-0B39-467E-83DC-76C7B67B2EAB} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Slouch Interceptor" ValueLocId="*"/>
-    <ROW Property="ProductVersion" Value="1.0"/>
+    <ROW Property="ProductVersion" Value="1.0.0"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{FB6BDCFE-ECCF-4E13-A194-26EA3350C08D}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>

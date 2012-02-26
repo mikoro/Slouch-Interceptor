@@ -32,9 +32,9 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotifyIconForm));
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.startStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -44,36 +44,38 @@
 			this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
 			this.notifyIcon.Text = "Slouch Interceptor";
 			this.notifyIcon.Visible = true;
+			this.notifyIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIconMouseUp);
 			// 
 			// contextMenuStrip
 			// 
 			this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem,
+            this.startStopToolStripMenuItem,
             this.configureToolStripMenuItem,
             this.exitToolStripMenuItem});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(128, 70);
-			// 
-			// startToolStripMenuItem
-			// 
-			this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-			this.startToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-			this.startToolStripMenuItem.Text = "Start";
-			this.startToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItemClick);
+			this.contextMenuStrip.Size = new System.Drawing.Size(153, 92);
+			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripOpening);
 			// 
 			// configureToolStripMenuItem
 			// 
 			this.configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-			this.configureToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+			this.configureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.configureToolStripMenuItem.Text = "Configure";
 			this.configureToolStripMenuItem.Click += new System.EventHandler(this.ConfigureToolStripMenuItemClick);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
+			// 
+			// startStopToolStripMenuItem
+			// 
+			this.startStopToolStripMenuItem.Name = "startStopToolStripMenuItem";
+			this.startStopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.startStopToolStripMenuItem.Text = "StartStop";
+			this.startStopToolStripMenuItem.Click += new System.EventHandler(this.StartStopToolStripMenuItemClick);
 			// 
 			// NotifyIconForm
 			// 
@@ -97,6 +99,6 @@
 		public System.Windows.Forms.NotifyIcon notifyIcon;
 		public System.Windows.Forms.ContextMenuStrip contextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem configureToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem startStopToolStripMenuItem;
 	}
 }

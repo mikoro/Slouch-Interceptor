@@ -1,6 +1,6 @@
 ﻿namespace Mironworks.SlouchInterceptor
 {
-	partial class NotifyIconForm
+	partial class MainForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,12 +29,12 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotifyIconForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.startStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.startStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -53,40 +53,45 @@
             this.configureToolStripMenuItem,
             this.exitToolStripMenuItem});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(153, 92);
+			this.contextMenuStrip.Size = new System.Drawing.Size(128, 70);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripOpening);
+			// 
+			// startStopToolStripMenuItem
+			// 
+			this.startStopToolStripMenuItem.Name = "startStopToolStripMenuItem";
+			this.startStopToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+			this.startStopToolStripMenuItem.Text = "StartStop";
+			this.startStopToolStripMenuItem.Click += new System.EventHandler(this.StartStopToolStripMenuItemClick);
 			// 
 			// configureToolStripMenuItem
 			// 
 			this.configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-			this.configureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.configureToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
 			this.configureToolStripMenuItem.Text = "Configure";
 			this.configureToolStripMenuItem.Click += new System.EventHandler(this.ConfigureToolStripMenuItemClick);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
-			// startStopToolStripMenuItem
-			// 
-			this.startStopToolStripMenuItem.Name = "startStopToolStripMenuItem";
-			this.startStopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.startStopToolStripMenuItem.Text = "StartStop";
-			this.startStopToolStripMenuItem.Click += new System.EventHandler(this.StartStopToolStripMenuItemClick);
-			// 
-			// NotifyIconForm
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(400, 400);
+			this.ControlBox = false;
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "NotifyIconForm";
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
+			this.Name = "MainForm";
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Slouch Interceptor";
 			this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
 			this.contextMenuStrip.ResumeLayout(false);
 			this.ResumeLayout(false);

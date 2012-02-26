@@ -5,9 +5,6 @@
 
 	internal class Program
 	{
-		private NotifyIconForm notifyIconForm;
-		private OverlayForm overlayForm;
-
 		[STAThread]
 		private static void Main()
 		{
@@ -19,8 +16,7 @@
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			overlayForm = new OverlayForm();
-			notifyIconForm = new NotifyIconForm(overlayForm);
+			var mainForm = new MainForm { Visible = false };
 
 			Application.Run();
 		}

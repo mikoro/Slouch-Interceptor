@@ -5,14 +5,13 @@
 	using System.Reflection;
 	using System.Windows.Forms;
 
-	public partial class NotifyIconForm : Form
+	public partial class MainForm : Form
 	{
-		private ConfigurationForm configurationForm;
-		private OverlayForm overlayForm;
+		private ConfigurationForm configurationForm = new ConfigurationForm();
+		private OverlayForm overlayForm = new OverlayForm();
 
-		public NotifyIconForm(OverlayForm overlayForm)
+		public MainForm()
 		{
-			this.overlayForm = overlayForm;
 			InitializeComponent();
 		}
 
@@ -32,7 +31,7 @@
 
 		private void StartStopToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			if (overlayForm == null || overlayForm.IsDisposed)
+			if (overlayForm.IsDisposed)
 				overlayForm = new OverlayForm();
 
 			if (!overlayForm.Visible)
@@ -43,7 +42,7 @@
 
 		private void ConfigureToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			if (configurationForm == null || configurationForm.IsDisposed)
+			if (configurationForm.IsDisposed)
 				configurationForm = new ConfigurationForm();
 
 			configurationForm.Show();
@@ -53,7 +52,10 @@
 
 		private void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
+			configurationForm.Close();
+			overlayForm.Close();
 			Close();
+
 			Application.Exit();
 		}
 	}

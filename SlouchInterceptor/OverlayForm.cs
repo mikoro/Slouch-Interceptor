@@ -13,6 +13,8 @@
 		{
 			InitializeComponent();
 
+			pictureBox.Load(Settings.Default.ImagePath);
+
 			int screenWidth = Screen.FromControl(this).Bounds.Width;
 			int screenHeight = Screen.FromControl(this).Bounds.Height;
 			int pictureVerticalLocation = screenHeight / 2 + pictureBox.Image.Height / 2 + 50;

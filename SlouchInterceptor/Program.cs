@@ -20,14 +20,14 @@
 		{
 			XmlConfigurator.Configure();
 
+			Log.Debug("Starting");
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 			AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
 
 			var mainForm = new MainForm { Visible = false };
-
-			Log.Debug("Starting");
 
 			Application.Run();
 

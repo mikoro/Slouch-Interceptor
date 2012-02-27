@@ -144,10 +144,7 @@
 
 		private void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			configurationForm.Close();
-			overlayForm.Close();
 			Close();
-
 			Application.Exit();
 		}
 	}

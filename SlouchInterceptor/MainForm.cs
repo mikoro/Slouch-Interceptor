@@ -2,6 +2,7 @@
 {
 	using System;
 	using System.ComponentModel;
+	using System.Diagnostics;
 	using System.Reflection;
 	using System.Windows.Forms;
 	using Mironworks.SlouchInterceptor.Properties;
@@ -10,6 +11,7 @@
 	public partial class MainForm : Form
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(MainForm).Name);
+		private readonly IdleDetector idleDetector = new IdleDetector();
 		private readonly Timer showOverlayTimer = new Timer();
 		private ConfigurationForm configurationForm = new ConfigurationForm();
 		private OverlayForm overlayForm = new OverlayForm();
@@ -17,14 +19,7 @@
 
 		public MainForm()
 		{
-			Log.Debug("Starting");
-
 			InitializeComponent();
-
-			showOverlayTimer.Interval = (int)TimeSpan.FromMinutes(Settings.Default.OverlayShowInterval).TotalMilliseconds;
-			showOverlayTimer.Tick += ShowOverlayTimerTick;
-
-			StartShowOverlayTimer();
 
 			if (Settings.Default.FirstRun)
 			{
@@ -33,52 +28,76 @@
 				Settings.Default.Save();
 			}
 
+			showOverlayTimer.Interval = Settings.Default.OverlayShowInterval * 1000;
+			showOverlayTimer.Tick += ShowOverlayTimerOnTick;
+
 			overlayForm.FormClosed += OverlayFormOnFormClosed;
+			idleDetector.IdleStart += OnIdleStart;
+			idleDetector.IdleStop += OnIdleStop;
+
+			RestartShowOverlayTimer();
 		}
 
-		private void CheckOverlayForm()
+		private void ShowOverlayForm()
 		{
+			Trace.WriteLine("Show overlay form");
+
+			StopShowOverlayTimer();
+			showOverlayTimerTickTime = DateTime.Now;
+
 			if (overlayForm.IsDisposed)
 			{
 				overlayForm.FormClosed -= OverlayFormOnFormClosed;
 				overlayForm = new OverlayForm();
 				overlayForm.FormClosed += OverlayFormOnFormClosed;
 			}
-		}
-
-		private void ShowOverlayForm()
-		{
-			Log.Info("Showing the overlay");
 
 			overlayForm.Show();
-			showOverlayTimer.Stop();
-			showOverlayTimerTickTime = DateTime.Now;
 		}
 
-		private void StartShowOverlayTimer()
+		private void RestartShowOverlayTimer()
 		{
+			Trace.WriteLine("Restart show overlay timer");
+
+			showOverlayTimer.Stop();
 			showOverlayTimer.Start();
 			showOverlayTimerTickTime = DateTime.Now + TimeSpan.FromMilliseconds(showOverlayTimer.Interval);
 		}
 
-		private void ShowOverlayTimerTick(object sender, EventArgs e)
+		private void StopShowOverlayTimer()
 		{
-			CheckOverlayForm();
-			ShowOverlayForm();
+			Trace.WriteLine("Stop show overlay timer");
+
+			showOverlayTimer.Stop();
 		}
 
-		private void TimerCheckIdleTick(object sender, EventArgs e)
+		private void ShowOverlayTimerOnTick(object sender, EventArgs e)
 		{
-			if (LastInputInfo.GetLastInputTime() >= Settings.Default.IdleResetThreshold)
-			{
-				showOverlayTimer.Stop();
-				StartShowOverlayTimer();
-			}
+			Trace.WriteLine("Show overlay timer tick");
+
+			ShowOverlayForm();
 		}
 
 		private void OverlayFormOnFormClosed(object sender, FormClosedEventArgs e)
 		{
-			StartShowOverlayTimer();
+			if (!idleDetector.IsIdle)
+				RestartShowOverlayTimer();
+		}
+
+		private void OnIdleStart(object sender, EventArgs e)
+		{
+			Trace.WriteLine("Idle start");
+
+			if (showOverlayTimer.Enabled)
+				StopShowOverlayTimer();
+		}
+
+		private void OnIdleStop(object sender, EventArgs e)
+		{
+			Trace.WriteLine("Idle stop");
+
+			if (!overlayForm.Visible)
+				RestartShowOverlayTimer();
 		}
 
 		private void NotifyIconMouseMove(object sender, MouseEventArgs e)
@@ -107,8 +126,6 @@
 
 		private void StartStopToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			CheckOverlayForm();
-
 			if (!overlayForm.Visible)
 				ShowOverlayForm();
 			else
@@ -127,8 +144,6 @@
 
 		private void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			Log.Debug("Closing");
-
 			configurationForm.Close();
 			overlayForm.Close();
 			Close();

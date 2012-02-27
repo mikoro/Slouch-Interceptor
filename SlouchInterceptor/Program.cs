@@ -23,15 +23,20 @@
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-			AppDomain.CurrentDomain.UnhandledException += HandleException;
-			
+			AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
+
 			var mainForm = new MainForm { Visible = false };
 
+			Log.Debug("Starting");
+
 			Application.Run();
+
+			Log.Debug("Stopping");
+
 			Settings.Default.Save();
 		}
 
-		private static void HandleException(object sender, UnhandledExceptionEventArgs e)
+		private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
 		{
 			Log.Fatal("AppDomain Unhandled Exception", (Exception)e.ExceptionObject);
 		}

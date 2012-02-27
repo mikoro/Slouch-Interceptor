@@ -100,14 +100,17 @@
 				RestartShowOverlayTimer();
 		}
 
-		private void NotifyIconMouseMove(object sender, MouseEventArgs e)
+		private void TimerUpdateRemainingTextsTick(object sender, EventArgs e)
 		{
 			var t = new TimeSpan(0);
 
 			if (showOverlayTimerTickTime >= DateTime.Now)
 				t = showOverlayTimerTickTime - DateTime.Now;
 
-			notifyIcon.Text = string.Format("Slouch Interceptor\nNext break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
+			var text = string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
+
+			notifyIcon.Text = "Slouch Interceptor\n" + text;
+			remainingTextToolStripMenuItem.Text = text;
 		}
 
 		private void NotifyIconMouseUp(object sender, MouseEventArgs e)
@@ -121,15 +124,21 @@
 
 		private void ContextMenuStripOpening(object sender, CancelEventArgs e)
 		{
-			startStopToolStripMenuItem.Text = overlayForm.Visible ? "Stop" : "Start";
+			showHideToolStripMenuItem.Text = overlayForm.Visible ? "Hide" : "Show";
+			resetTimerToolStripMenuItem.Enabled = configureToolStripMenuItem.Enabled = !overlayForm.Visible;
 		}
 
-		private void StartStopToolStripMenuItemClick(object sender, EventArgs e)
+		private void ShowHideToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			if (!overlayForm.Visible)
 				ShowOverlayForm();
 			else
 				overlayForm.Close();
+		}
+
+		private void ResetTimerToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			RestartShowOverlayTimer();
 		}
 
 		private void ConfigureToolStripMenuItemClick(object sender, EventArgs e)

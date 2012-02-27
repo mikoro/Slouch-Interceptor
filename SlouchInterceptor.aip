@@ -6,12 +6,14 @@
     <ROW Property="ARPNOMODIFY" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPNOREPAIR" Value="1"/>
     <ROW Property="ARPPRODUCTICON" Value="SlouchInterceptor.exe" Type="8"/>
+    <ROW Property="CTRLS" Value="2"/>
     <ROW Property="MSIFASTINSTALL" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="Manufacturer" Value="Mironworks" ValueLocId="*"/>
     <ROW Property="ProductCode" Value="1033:{1643825A-0B39-467E-83DC-76C7B67B2EAB} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Slouch Interceptor" ValueLocId="*"/>
     <ROW Property="ProductVersion" Value="1.0.0"/>
+    <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{FB6BDCFE-ECCF-4E13-A194-26EA3350C08D}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -28,14 +30,16 @@
     <ROW Component="SHORTCUTDIR" ComponentId="{1B469B9F-3FEF-4999-B19D-3324459D36D5}" Directory_="SHORTCUTDIR" Attributes="0"/>
     <ROW Component="SlouchInterceptor.exe" ComponentId="{B10D45ED-8E50-4BAE-9EAC-E9314C4D79CD}" Directory_="APPDIR" Attributes="0" KeyPath="SlouchInterceptor.exe"/>
     <ROW Component="SlouchInterceptor.exe.config" ComponentId="{5C16631B-149E-4F6F-8B5C-C6BB9CD0CD34}" Directory_="APPDIR" Attributes="0" KeyPath="SlouchInterceptor.exe.config" Type="0"/>
+    <ROW Component="log4net.dll" ComponentId="{0077F6D5-A5DC-4E35-957B-A83F5E32E316}" Directory_="APPDIR" Attributes="0" KeyPath="log4net.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
-    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="ProductInformation SHORTCUTDIR SlouchInterceptor.exe SlouchInterceptor.exe.config"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="ProductInformation SHORTCUTDIR SlouchInterceptor.exe SlouchInterceptor.exe.config log4net.dll"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="SlouchInterceptor.exe" Component_="SlouchInterceptor.exe" FileName="Slouch~1.exe|Slouch Interceptor.exe" Attributes="0" SourcePath="SlouchInterceptor\bin\Release\Slouch Interceptor.exe" SelfReg="false" NextFile="SlouchInterceptor.exe.config"/>
-    <ROW File="SlouchInterceptor.exe.config" Component_="SlouchInterceptor.exe.config" FileName="Slouch~1.con|Slouch Interceptor.exe.config" Attributes="0" SourcePath="SlouchInterceptor\bin\Release\Slouch Interceptor.exe.config" SelfReg="false"/>
+    <ROW File="SlouchInterceptor.exe.config" Component_="SlouchInterceptor.exe.config" FileName="Slouch~1.con|Slouch Interceptor.exe.config" Attributes="0" SourcePath="SlouchInterceptor\bin\Release\Slouch Interceptor.exe.config" SelfReg="false" NextFile="log4net.dll"/>
+    <ROW File="log4net.dll" Component_="log4net.dll" FileName="log4net.dll" Attributes="0" SourcePath="SlouchInterceptor\bin\Release\log4net.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
     <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="." PackageFileName="Slouch Interceptor [|ProductVersion]" Languages="en" InstallationType="4"/>
@@ -87,12 +91,13 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
     <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_LaunchApp" Type="1" Source="aicustact.dll" Target="[#SlouchInterceptor.exe]"/>
     <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
     <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
-    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFilesFolder][ProductName]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
   </COMPONENT>

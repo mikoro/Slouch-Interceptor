@@ -35,7 +35,6 @@
 			this.startStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.timerCheckIdle = new System.Windows.Forms.Timer(this.components);
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -80,12 +79,6 @@
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
-			// timerCheckIdle
-			// 
-			this.timerCheckIdle.Enabled = true;
-			this.timerCheckIdle.Interval = 1000;
-			this.timerCheckIdle.Tick += new System.EventHandler(this.TimerCheckIdleTick);
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,6 +107,5 @@
 		public System.Windows.Forms.ContextMenuStrip contextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem configureToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem startStopToolStripMenuItem;
-		private System.Windows.Forms.Timer timerCheckIdle;
 	}
 }

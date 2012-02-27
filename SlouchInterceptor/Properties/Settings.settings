@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="OverlayShowInterval" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">45</Value>
+      <Value Profile="(Default)">2700</Value>
     </Setting>
     <Setting Name="OverlayShowDuration" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">180</Value>
     </Setting>
-    <Setting Name="IdleResetThreshold" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">180</Value>
+    <Setting Name="IdleThreshold" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300</Value>
     </Setting>
     <Setting Name="FirstRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

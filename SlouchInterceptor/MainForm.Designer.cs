@@ -32,9 +32,15 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.startStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.remainingTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.showHideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.resetTimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.timerUpdateRemainingTexts = new System.Windows.Forms.Timer(this.components);
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -44,40 +50,78 @@
 			this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
 			this.notifyIcon.Text = "Slouch Interceptor";
 			this.notifyIcon.Visible = true;
-			this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NotifyIconMouseMove);
 			this.notifyIcon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NotifyIconMouseUp);
 			// 
 			// contextMenuStrip
 			// 
 			this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startStopToolStripMenuItem,
+            this.remainingTextToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.showHideToolStripMenuItem,
+            this.resetTimerToolStripMenuItem,
+            this.toolStripSeparator2,
             this.configureToolStripMenuItem,
+            this.toolStripSeparator3,
             this.exitToolStripMenuItem});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(153, 92);
+			this.contextMenuStrip.Size = new System.Drawing.Size(183, 154);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripOpening);
 			// 
-			// startStopToolStripMenuItem
+			// remainingTextToolStripMenuItem
 			// 
-			this.startStopToolStripMenuItem.Name = "startStopToolStripMenuItem";
-			this.startStopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-			this.startStopToolStripMenuItem.Text = "StartStop";
-			this.startStopToolStripMenuItem.Click += new System.EventHandler(this.StartStopToolStripMenuItemClick);
+			this.remainingTextToolStripMenuItem.Enabled = false;
+			this.remainingTextToolStripMenuItem.Name = "remainingTextToolStripMenuItem";
+			this.remainingTextToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+			this.remainingTextToolStripMenuItem.Text = "Next break in 0:00:00";
+			// 
+			// toolStripSeparator1
+			// 
+			this.toolStripSeparator1.Name = "toolStripSeparator1";
+			this.toolStripSeparator1.Size = new System.Drawing.Size(179, 6);
+			// 
+			// showHideToolStripMenuItem
+			// 
+			this.showHideToolStripMenuItem.Name = "showHideToolStripMenuItem";
+			this.showHideToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+			this.showHideToolStripMenuItem.Text = "ShowHide";
+			this.showHideToolStripMenuItem.Click += new System.EventHandler(this.ShowHideToolStripMenuItemClick);
+			// 
+			// resetTimerToolStripMenuItem
+			// 
+			this.resetTimerToolStripMenuItem.Name = "resetTimerToolStripMenuItem";
+			this.resetTimerToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+			this.resetTimerToolStripMenuItem.Text = "Reset timer";
+			this.resetTimerToolStripMenuItem.Click += new System.EventHandler(this.ResetTimerToolStripMenuItemClick);
+			// 
+			// toolStripSeparator2
+			// 
+			this.toolStripSeparator2.Name = "toolStripSeparator2";
+			this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
 			// 
 			// configureToolStripMenuItem
 			// 
-			this.configureToolStripMenuItem.Enabled = false;
 			this.configureToolStripMenuItem.Name = "configureToolStripMenuItem";
-			this.configureToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.configureToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
 			this.configureToolStripMenuItem.Text = "Configure";
 			this.configureToolStripMenuItem.Click += new System.EventHandler(this.ConfigureToolStripMenuItemClick);
+			// 
+			// toolStripSeparator3
+			// 
+			this.toolStripSeparator3.Name = "toolStripSeparator3";
+			this.toolStripSeparator3.Size = new System.Drawing.Size(179, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
+			// 
+			// timerUpdateRemainingTexts
+			// 
+			this.timerUpdateRemainingTexts.Enabled = true;
+			this.timerUpdateRemainingTexts.Interval = 1000;
+			this.timerUpdateRemainingTexts.Tick += new System.EventHandler(this.TimerUpdateRemainingTextsTick);
 			// 
 			// MainForm
 			// 
@@ -106,6 +150,12 @@
 		public System.Windows.Forms.NotifyIcon notifyIcon;
 		public System.Windows.Forms.ContextMenuStrip contextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem configureToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem startStopToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem remainingTextToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem showHideToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem resetTimerToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+		private System.Windows.Forms.Timer timerUpdateRemainingTexts;
 	}
 }

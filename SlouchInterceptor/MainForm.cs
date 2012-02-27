@@ -5,9 +5,11 @@
 	using System.Reflection;
 	using System.Windows.Forms;
 	using Mironworks.SlouchInterceptor.Properties;
+	using log4net;
 
 	public partial class MainForm : Form
 	{
+		private static readonly ILog Log = LogManager.GetLogger(typeof(MainForm).Name);
 		private readonly Timer showOverlayTimer = new Timer();
 		private ConfigurationForm configurationForm = new ConfigurationForm();
 		private OverlayForm overlayForm = new OverlayForm();
@@ -15,6 +17,8 @@
 
 		public MainForm()
 		{
+			Log.Debug("Starting");
+
 			InitializeComponent();
 
 			showOverlayTimer.Interval = (int)TimeSpan.FromMinutes(Settings.Default.OverlayShowInterval).TotalMilliseconds;
@@ -22,7 +26,12 @@
 
 			StartShowOverlayTimer();
 
-			notifyIcon.ShowBalloonTip(0, "Slouch Interceptor", "Slouch Interceptor is running", ToolTipIcon.None);
+			if (Settings.Default.FirstRun)
+			{
+				notifyIcon.ShowBalloonTip(0, "Slouch Interceptor", "Slouch Interceptor is running", ToolTipIcon.None);
+				Settings.Default.FirstRun = false;
+				Settings.Default.Save();
+			}
 
 			overlayForm.FormClosed += OverlayFormOnFormClosed;
 		}
@@ -39,6 +48,8 @@
 
 		private void ShowOverlayForm()
 		{
+			Log.Info("Showing the overlay");
+
 			overlayForm.Show();
 			showOverlayTimer.Stop();
 			showOverlayTimerTickTime = DateTime.Now;
@@ -116,6 +127,8 @@
 
 		private void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
+			Log.Debug("Closing");
+
 			configurationForm.Close();
 			overlayForm.Close();
 			Close();

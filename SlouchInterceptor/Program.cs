@@ -2,9 +2,14 @@
 {
 	using System;
 	using System.Windows.Forms;
+	using Mironworks.SlouchInterceptor.Properties;
+	using log4net;
+	using log4net.Config;
 
 	internal class Program
 	{
+		private static readonly ILog Log = LogManager.GetLogger(typeof(Program).Name);
+
 		[STAThread]
 		private static void Main()
 		{
@@ -13,12 +18,22 @@
 
 		public void Run()
 		{
+			XmlConfigurator.Configure();
+
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-
+			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+			AppDomain.CurrentDomain.UnhandledException += HandleException;
+			
 			var mainForm = new MainForm { Visible = false };
 
 			Application.Run();
+			Settings.Default.Save();
+		}
+
+		private static void HandleException(object sender, UnhandledExceptionEventArgs e)
+		{
+			Log.Fatal("AppDomain Unhandled Exception", (Exception)e.ExceptionObject);
 		}
 	}
 }

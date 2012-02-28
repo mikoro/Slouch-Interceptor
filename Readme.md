@@ -14,6 +14,10 @@ When running the program only a small icon will appear in the taskbar, use it to
 
 ## Version history
 
+### 1.1.0 (2/28/2012)
+
+- Added configuration options and support for user idle detection
+
 ### 1.0.0 (2/26/2012)
 
 - Initial version

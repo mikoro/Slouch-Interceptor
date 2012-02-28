@@ -87,7 +87,7 @@
 			this.Text = "Slouch Interceptor";
 			this.TopMost = true;
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-			this.Shown += new System.EventHandler(this.OverlayFormShown);
+			this.Load += new System.EventHandler(this.OverlayFormLoad);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			this.ResumeLayout(false);
 

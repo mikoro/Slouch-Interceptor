@@ -7,11 +7,9 @@
 	using System.Windows.Forms;
 	using Microsoft.Win32;
 	using Mironworks.SlouchInterceptor.Properties;
-	using log4net;
 
 	public partial class MainForm : Form
 	{
-		private static readonly ILog Log = LogManager.GetLogger(typeof(MainForm).Name);
 		private readonly IdleDetector idleDetector = new IdleDetector();
 		private readonly Timer showOverlayTimer = new Timer();
 		private ConfigurationForm configurationForm = new ConfigurationForm();
@@ -29,13 +27,10 @@
 				Settings.Default.Save();
 			}
 
-			showOverlayTimer.Interval = Settings.Default.OverlayShowInterval * 1000;
 			showOverlayTimer.Tick += ShowOverlayTimerOnTick;
-
 			overlayForm.FormClosed += OverlayFormOnFormClosed;
 			idleDetector.IdleStart += OnIdleStart;
 			idleDetector.IdleStop += OnIdleStop;
-
 			SystemEvents.PowerModeChanged += OnPowerModeChanged;
 
 			RestartShowOverlayTimer();
@@ -70,6 +65,7 @@
 			Trace.WriteLine("Restart show overlay timer");
 
 			showOverlayTimer.Stop();
+			showOverlayTimer.Interval = Settings.Default.BreakInterval * 60 * 1000;
 			showOverlayTimer.Start();
 			showOverlayTimerTickTime = DateTime.Now + TimeSpan.FromMilliseconds(showOverlayTimer.Interval);
 		}
@@ -171,7 +167,9 @@
 			if (configurationForm.IsDisposed)
 				configurationForm = new ConfigurationForm();
 
-			configurationForm.Show();
+			if (!configurationForm.Visible)
+				configurationForm.Show();
+
 			configurationForm.WindowState = FormWindowState.Normal;
 			configurationForm.Focus();
 		}

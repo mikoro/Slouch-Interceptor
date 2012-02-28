@@ -23,14 +23,14 @@
 
 		private void TimerOnTick(object sender, EventArgs e)
 		{
-			if (GetLastInputTime() >= Settings.Default.IdleThreshold && !IsIdle)
+			if (GetLastInputTime() >= (Settings.Default.IdleThreshold * 60) && !IsIdle)
 			{
 				IsIdle = true;
 
 				if (IdleStart != null)
 					IdleStart(this, null);
 			}
-			else if (IsIdle && GetLastInputTime() < Settings.Default.IdleThreshold)
+			else if (IsIdle && GetLastInputTime() < (Settings.Default.IdleThreshold * 60))
 			{
 				IsIdle = false;
 

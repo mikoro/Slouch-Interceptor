@@ -25,31 +25,31 @@ namespace Mironworks.SlouchInterceptor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2700")]
-        public int OverlayShowInterval {
+        [global::System.Configuration.DefaultSettingValueAttribute("45")]
+        public int BreakInterval {
             get {
-                return ((int)(this["OverlayShowInterval"]));
+                return ((int)(this["BreakInterval"]));
             }
             set {
-                this["OverlayShowInterval"] = value;
+                this["BreakInterval"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("180")]
-        public int OverlayShowDuration {
+        public int BreakDuration {
             get {
-                return ((int)(this["OverlayShowDuration"]));
+                return ((int)(this["BreakDuration"]));
             }
             set {
-                this["OverlayShowDuration"] = value;
+                this["BreakDuration"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("300")]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
         public int IdleThreshold {
             get {
                 return ((int)(this["IdleThreshold"]));
@@ -80,6 +80,18 @@ namespace Mironworks.SlouchInterceptor.Properties {
             }
             set {
                 this["ImagePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowImage {
+            get {
+                return ((bool)(this["ShowImage"]));
+            }
+            set {
+                this["ShowImage"] = value;
             }
         }
     }

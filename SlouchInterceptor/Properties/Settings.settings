@@ -2,20 +2,23 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Mironworks.SlouchInterceptor.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="OverlayShowInterval" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">2700</Value>
+    <Setting Name="BreakInterval" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">45</Value>
     </Setting>
-    <Setting Name="OverlayShowDuration" Type="System.Int32" Scope="User">
+    <Setting Name="BreakDuration" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">180</Value>
     </Setting>
     <Setting Name="IdleThreshold" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">300</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="FirstRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ImagePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">Images\SlouchInterceptor.png</Value>
+    </Setting>
+    <Setting Name="ShowImage" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

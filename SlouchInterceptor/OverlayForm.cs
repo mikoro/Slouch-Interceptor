@@ -2,31 +2,46 @@
 {
 	using System;
 	using System.Drawing;
+	using System.IO;
 	using System.Windows.Forms;
 	using Mironworks.SlouchInterceptor.Properties;
+	using log4net;
 
 	public partial class OverlayForm : Form
 	{
-		private int secondsRemaining = Settings.Default.OverlayShowDuration;
+		private static readonly ILog Log = LogManager.GetLogger(typeof(OverlayForm).Name);
+		private int secondsRemaining = Settings.Default.BreakDuration;
 
 		public OverlayForm()
 		{
 			InitializeComponent();
-
-			pictureBox.Load(Settings.Default.ImagePath);
-
-			int screenWidth = Screen.FromControl(this).Bounds.Width;
-			int screenHeight = Screen.FromControl(this).Bounds.Height;
-			int pictureVerticalLocation = screenHeight / 2 + pictureBox.Image.Height / 2 + 50;
-
-			labelTimeRemaining.Size = new Size(screenWidth, 100);
-			labelTimeRemaining.Location = new Point(0, pictureVerticalLocation);
-
-			SetTimeRemainingText();
 		}
 
-		private void OverlayFormShown(object sender, EventArgs e)
+		private void OverlayFormLoad(object sender, EventArgs e)
 		{
+			int labelVerticalLocation = Screen.FromControl(this).Bounds.Height / 2;
+			labelTimeRemaining.Size = new Size(Screen.FromControl(this).Bounds.Width, 100);
+
+			if (Settings.Default.ShowImage)
+			{
+				try
+				{
+					pictureBox.Load(Settings.Default.ImagePath);
+					labelVerticalLocation += pictureBox.Image.Height / 2 + labelTimeRemaining.Size.Height / 2;
+				}
+				catch (Exception ex)
+				{
+					if (ex is InvalidOperationException || ex is ArgumentException || ex is FileNotFoundException)
+						Log.Warn("Could not load the image", ex);
+					else
+						throw;
+				}
+			}
+
+			labelTimeRemaining.Location = new Point(0, labelVerticalLocation);
+
+			SetTimeRemainingText();
+
 			timerCountdown.Enabled = true;
 		}
 

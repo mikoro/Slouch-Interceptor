@@ -5,6 +5,7 @@
 	using System.Diagnostics;
 	using System.Reflection;
 	using System.Windows.Forms;
+	using Microsoft.Win32;
 	using Mironworks.SlouchInterceptor.Properties;
 	using log4net;
 
@@ -35,6 +36,8 @@
 			idleDetector.IdleStart += OnIdleStart;
 			idleDetector.IdleStop += OnIdleStop;
 
+			SystemEvents.PowerModeChanged += OnPowerModeChanged;
+
 			RestartShowOverlayTimer();
 		}
 
@@ -53,6 +56,13 @@
 			}
 
 			overlayForm.Show();
+		}
+
+		private void CloseOverlayForm()
+		{
+			Trace.WriteLine("Close overlay form");
+
+			overlayForm.Close();
 		}
 
 		private void RestartShowOverlayTimer()
@@ -88,8 +98,7 @@
 		{
 			Trace.WriteLine("Idle start");
 
-			if (showOverlayTimer.Enabled)
-				StopShowOverlayTimer();
+			StopShowOverlayTimer();
 		}
 
 		private void OnIdleStop(object sender, EventArgs e)
@@ -100,14 +109,30 @@
 				RestartShowOverlayTimer();
 		}
 
+		private void OnPowerModeChanged(object sender, PowerModeChangedEventArgs e)
+		{
+			if (e.Mode == PowerModes.Suspend)
+			{
+				Trace.WriteLine("Suspending");
+
+				CloseOverlayForm();
+			}
+			else if (e.Mode == PowerModes.Resume)
+			{
+				Trace.WriteLine("Resuming");
+
+				RestartShowOverlayTimer();
+			}
+		}
+
 		private void TimerUpdateRemainingTextsTick(object sender, EventArgs e)
 		{
 			var t = new TimeSpan(0);
 
-			if (showOverlayTimerTickTime >= DateTime.Now)
+			if (showOverlayTimerTickTime > DateTime.Now)
 				t = showOverlayTimerTickTime - DateTime.Now;
 
-			var text = string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
+			string text = string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
 
 			notifyIcon.Text = "Slouch Interceptor\n" + text;
 			remainingTextToolStripMenuItem.Text = text;
@@ -133,7 +158,7 @@
 			if (!overlayForm.Visible)
 				ShowOverlayForm();
 			else
-				overlayForm.Close();
+				CloseOverlayForm();
 		}
 
 		private void ResetTimerToolStripMenuItemClick(object sender, EventArgs e)

@@ -13,6 +13,7 @@
 		private readonly IdleDetector idleDetector = new IdleDetector();
 		private readonly Timer showOverlayTimer = new Timer();
 		private ConfigurationForm configurationForm = new ConfigurationForm();
+		private bool isTimerEnabled = true;
 		private OverlayForm overlayForm = new OverlayForm();
 		private DateTime showOverlayTimerTickTime = DateTime.Now;
 
@@ -32,6 +33,10 @@
 			idleDetector.IdleStart += OnIdleStart;
 			idleDetector.IdleStop += OnIdleStop;
 			SystemEvents.PowerModeChanged += OnPowerModeChanged;
+
+			Settings.Default.BreakInterval = 1;
+			Settings.Default.BreakDuration = 5;
+			Settings.Default.IdleThreshold = 1;
 
 			RestartShowOverlayTimer();
 		}
@@ -86,7 +91,7 @@
 
 		private void OverlayFormOnFormClosed(object sender, FormClosedEventArgs e)
 		{
-			if (!idleDetector.IsIdle)
+			if (!idleDetector.IsIdle && isTimerEnabled)
 				RestartShowOverlayTimer();
 		}
 
@@ -101,7 +106,7 @@
 		{
 			Trace.WriteLine("Idle stop");
 
-			if (!overlayForm.Visible)
+			if (!overlayForm.Visible && isTimerEnabled)
 				RestartShowOverlayTimer();
 		}
 
@@ -117,7 +122,8 @@
 			{
 				Trace.WriteLine("Resuming");
 
-				RestartShowOverlayTimer();
+				if (isTimerEnabled)
+					RestartShowOverlayTimer();
 			}
 		}
 
@@ -128,7 +134,10 @@
 			if (showOverlayTimerTickTime > DateTime.Now)
 				t = showOverlayTimerTickTime - DateTime.Now;
 
-			string text = string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
+			string text = "Next break in 0:00:00";
+
+			if (isTimerEnabled)
+				text = string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
 
 			notifyIcon.Text = "Slouch Interceptor\n" + text;
 			remainingTextToolStripMenuItem.Text = text;
@@ -145,11 +154,12 @@
 
 		private void ContextMenuStripOpening(object sender, CancelEventArgs e)
 		{
-			showHideToolStripMenuItem.Text = overlayForm.Visible ? "Hide" : "Show";
-			resetTimerToolStripMenuItem.Enabled = configureToolStripMenuItem.Enabled = !overlayForm.Visible;
+			startStopBreakToolStripMenuItem.Text = overlayForm.Visible ? "Stop break" : "Start break";
+			disableEnableTimerToolStripMenuItem.Text = isTimerEnabled ? "Disable timer" : "Enable timer";
+			configureToolStripMenuItem.Enabled = disableEnableTimerToolStripMenuItem.Enabled = !overlayForm.Visible;
 		}
 
-		private void ShowHideToolStripMenuItemClick(object sender, EventArgs e)
+		private void StartStopBreakToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			if (!overlayForm.Visible)
 				ShowOverlayForm();
@@ -157,9 +167,18 @@
 				CloseOverlayForm();
 		}
 
-		private void ResetTimerToolStripMenuItemClick(object sender, EventArgs e)
+		private void DisableEnableTimerToolStripMenuItemClick(object sender, EventArgs e)
 		{
-			RestartShowOverlayTimer();
+			if (isTimerEnabled)
+			{
+				StopShowOverlayTimer();
+				isTimerEnabled = false;
+			}
+			else
+			{
+				RestartShowOverlayTimer();
+				isTimerEnabled = true;
+			}
 		}
 
 		private void ConfigureToolStripMenuItemClick(object sender, EventArgs e)

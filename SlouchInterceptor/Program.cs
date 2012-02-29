@@ -32,8 +32,6 @@
 			Application.Run();
 
 			Log.Debug("Stopping");
-
-			Settings.Default.Save();
 		}
 
 		private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)

@@ -19,15 +19,15 @@
 
 		private void OverlayFormLoad(object sender, EventArgs e)
 		{
-			int labelVerticalLocation = Screen.FromControl(this).Bounds.Height / 2;
 			labelTimeRemaining.Size = new Size(Screen.FromControl(this).Bounds.Width, 100);
+			int labelVerticalLocation = (Screen.FromControl(this).Bounds.Height / 2) - (labelTimeRemaining.Size.Height / 2);
 
 			if (Settings.Default.ShowImage)
 			{
 				try
 				{
 					pictureBox.Load(Settings.Default.ImagePath);
-					labelVerticalLocation += pictureBox.Image.Height / 2 + labelTimeRemaining.Size.Height / 2;
+					labelVerticalLocation += (pictureBox.Image.Height / 2) + labelTimeRemaining.Size.Height;
 				}
 				catch (Exception ex)
 				{

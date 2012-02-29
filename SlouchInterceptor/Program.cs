@@ -2,7 +2,6 @@
 {
 	using System;
 	using System.Windows.Forms;
-	using Mironworks.SlouchInterceptor.Properties;
 	using log4net;
 	using log4net.Config;
 

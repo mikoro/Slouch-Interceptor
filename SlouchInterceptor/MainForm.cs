@@ -34,9 +34,11 @@
 			idleDetector.IdleStop += OnIdleStop;
 			SystemEvents.PowerModeChanged += OnPowerModeChanged;
 
+			/*
 			Settings.Default.BreakInterval = 1;
 			Settings.Default.BreakDuration = 5;
 			Settings.Default.IdleThreshold = 1;
+			*/
 
 			RestartShowOverlayTimer();
 		}

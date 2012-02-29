@@ -35,9 +35,7 @@
 			this.remainingTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.startStopBreakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
 			this.disableEnableTimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.configureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,14 +57,12 @@
             this.remainingTextToolStripMenuItem,
             this.toolStripSeparator1,
             this.startStopBreakToolStripMenuItem,
-            this.toolStripSeparator4,
             this.disableEnableTimerToolStripMenuItem,
-            this.toolStripSeparator2,
             this.configureToolStripMenuItem,
             this.toolStripSeparator3,
             this.exitToolStripMenuItem});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(183, 160);
+			this.contextMenuStrip.Size = new System.Drawing.Size(183, 148);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripOpening);
 			// 
 			// remainingTextToolStripMenuItem
@@ -88,22 +84,12 @@
 			this.startStopBreakToolStripMenuItem.Text = "StartStop break";
 			this.startStopBreakToolStripMenuItem.Click += new System.EventHandler(this.StartStopBreakToolStripMenuItemClick);
 			// 
-			// toolStripSeparator4
-			// 
-			this.toolStripSeparator4.Name = "toolStripSeparator4";
-			this.toolStripSeparator4.Size = new System.Drawing.Size(179, 6);
-			// 
 			// disableEnableTimerToolStripMenuItem
 			// 
 			this.disableEnableTimerToolStripMenuItem.Name = "disableEnableTimerToolStripMenuItem";
 			this.disableEnableTimerToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
 			this.disableEnableTimerToolStripMenuItem.Text = "DisableEnable timer";
 			this.disableEnableTimerToolStripMenuItem.Click += new System.EventHandler(this.DisableEnableTimerToolStripMenuItemClick);
-			// 
-			// toolStripSeparator2
-			// 
-			this.toolStripSeparator2.Name = "toolStripSeparator2";
-			this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
 			// 
 			// configureToolStripMenuItem
 			// 
@@ -159,11 +145,9 @@
 		private System.Windows.Forms.ToolStripMenuItem configureToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem remainingTextToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.Timer timerUpdateRemainingTexts;
 		private System.Windows.Forms.ToolStripMenuItem startStopBreakToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 		private System.Windows.Forms.ToolStripMenuItem disableEnableTimerToolStripMenuItem;
 	}
 }

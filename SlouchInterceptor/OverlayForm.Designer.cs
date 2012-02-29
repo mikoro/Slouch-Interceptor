@@ -47,6 +47,7 @@
 			this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pictureBox.TabIndex = 0;
 			this.pictureBox.TabStop = false;
+			this.pictureBox.DoubleClick += new System.EventHandler(this.PictureBoxDoubleClick);
 			// 
 			// timerCountdown
 			// 

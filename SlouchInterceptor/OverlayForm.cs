@@ -59,5 +59,13 @@
 			string timeText = string.Format("{0:D2}:{1:D2}", t.Minutes, t.Seconds);
 			labelTimeRemaining.Text = timeText;
 		}
+
+		private void PictureBoxDoubleClick(object sender, EventArgs e)
+		{
+			var me = (MouseEventArgs)e;
+
+			if (me.X < 10 && me.Y < 10)
+				Close();
+		}
 	}
 }

@@ -8,7 +8,7 @@ A simple program to remind you to take small regular breaks from working at your
 
 At least Windows XP, .NET Framework 2.0 and motivation to obey the program...
 
-## Installation
+## Download / Installation
 
 Download and install the latest version: [Slouch Interceptor 1.2.0](https://github.com/downloads/mikoro/Slouch-Interceptor/Slouch%20Interceptor%201.2.0.msi).
 
@@ -27,6 +27,12 @@ Older versions can be found from the [downloads page](https://github.com/mikoro/
 - The break timer can be enabled/disabled with the Enable/Disable Timer menu entry.
 
 ## Version history
+
+### 1.2.1 (3/21/2012)
+
+- Attempt to fix a bug that starts a break immediately after resuming the computer and logging in
+- Updated the readmes and the installer
+- Added a license to the project
 
 ### 1.2.0 (2/29/2012)
 

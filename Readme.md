@@ -1,4 +1,6 @@
-## What?
+# Slouch Interceptor
+
+## What is it?
 
 A simple program to remind you to take small regular breaks from working at your computer, i.e it intercepts your slouchiness ;)
 
@@ -8,9 +10,21 @@ At least Windows XP, .NET Framework 2.0 and motivation to obey the program...
 
 ## Installation
 
-Download the Windows installer from the [downloads page](https://github.com/mikoro/Slouch-Interceptor/downloads).
+Download and install the latest version: [Slouch Interceptor 1.2.0](https://github.com/downloads/mikoro/Slouch-Interceptor/Slouch%20Interceptor%201.2.0.msi).
 
-When running the program only a small icon will appear in the taskbar, use it to control the program.
+Older versions can be found from the [downloads page](https://github.com/mikoro/Slouch-Interceptor/downloads).
+
+## Instructions
+
+- The program should start automatically when starting Windows.
+- Click the program icon in the taskbar to show the context menu.
+- Configuration option explanations:
+ - Break Interval is the time between the breaks in minutes.
+ - Break Duration is the duration of the break in seconds.
+ - Idle Threshold is the user idle time in minutes after which the break timer is reset (you didn't use the computer and the program takes it as a break).
+ - You can change the image to something more suitable/motivating or disable it completely.
+- You can test the program with the Start Break menu entry. If you want to close the overlay window before the timeout, press the Windows key, click the taskbar icon and select Stop Break.
+- The break timer can be enabled/disabled with the Enable/Disable Timer menu entry.
 
 ## Version history
 

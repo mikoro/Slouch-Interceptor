@@ -124,8 +124,10 @@
 			{
 				Trace.WriteLine("Resuming");
 
-				if (isTimerEnabled)
-					RestartShowOverlayTimer();
+				isTimerEnabled = true;
+
+				CloseOverlayForm();
+				RestartShowOverlayTimer();
 			}
 		}
 

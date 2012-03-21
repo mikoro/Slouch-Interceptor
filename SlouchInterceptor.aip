@@ -9,14 +9,13 @@
     <ROW Property="CTRLS" Value="3"/>
     <ROW Property="MSIFASTINSTALL" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="Manufacturer" Value="Mironworks" ValueLocId="*"/>
-    <ROW Property="ProductCode" Value="1033:{40401E77-734B-4B9E-A1C8-AE0877F967A3} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{7FD85BDE-9F77-4EE3-B735-98D77DC6538D} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Slouch Interceptor" ValueLocId="*"/>
-    <ROW Property="ProductVersion" Value="1.2.0"/>
+    <ROW Property="ProductVersion" Value="1.2.1"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{FB6BDCFE-ECCF-4E13-A194-26EA3350C08D}"/>
-    <ROW Property="VIEWREADME" Value="1" Type="4"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
     <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
   </COMPONENT>

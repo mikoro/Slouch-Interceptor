@@ -10,7 +10,7 @@ At least Windows XP, .NET Framework 2.0 and motivation to obey the program...
 
 ## Download / Installation
 
-Download and install the latest version: [Slouch Interceptor 1.2.0](https://github.com/downloads/mikoro/Slouch-Interceptor/Slouch%20Interceptor%201.2.0.msi).
+Download and install the latest version: [Slouch Interceptor 1.2.1](https://github.com/downloads/mikoro/Slouch-Interceptor/Slouch%20Interceptor%201.2.1.msi).
 
 Older versions can be found from the [downloads page](https://github.com/mikoro/Slouch-Interceptor/downloads).
 

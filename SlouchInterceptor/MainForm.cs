@@ -30,6 +30,7 @@
 
 			showOverlayTimer.Tick += ShowOverlayTimerOnTick;
 			overlayForm.FormClosed += OverlayFormOnFormClosed;
+			configurationForm.FormClosed += ConfigurationFormOnFormClosed;
 			idleDetector.IdleStart += OnIdleStart;
 			idleDetector.IdleStop += OnIdleStop;
 			SystemEvents.PowerModeChanged += OnPowerModeChanged;
@@ -132,7 +133,7 @@
 			if (showOverlayTimerTickTime > DateTime.Now)
 				t = showOverlayTimerTickTime - DateTime.Now;
 
-			string text = "Next break in 0:00:00";
+			string text = "Timer is disabled";
 
 			if (isTimerEnabled)
 				text = string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
@@ -197,6 +198,7 @@
 
 		private void ConfigurationFormOnFormClosed(object sender, FormClosedEventArgs e)
 		{
+			RestartShowOverlayTimer();
 		}
 
 		private void ExitToolStripMenuItemClick(object sender, EventArgs e)

@@ -26,9 +26,7 @@
 			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 			AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
 
-			var mainForm = new MainForm { Visible = false };
-
-			Application.Run();
+			Application.Run(new MainForm());
 
 			Log.Debug("Stopping");
 		}

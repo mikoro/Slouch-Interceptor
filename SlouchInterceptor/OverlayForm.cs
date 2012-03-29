@@ -4,13 +4,12 @@
 	using System.Drawing;
 	using System.IO;
 	using System.Windows.Forms;
-	using Mironworks.SlouchInterceptor.Properties;
 	using log4net;
 
 	public partial class OverlayForm : Form
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(OverlayForm).Name);
-		private int secondsRemaining = Settings.Default.BreakDuration;
+		private int secondsRemaining;
 
 		public OverlayForm()
 		{
@@ -22,11 +21,11 @@
 			labelTimeRemaining.Size = new Size(Screen.FromControl(this).Bounds.Width, 100);
 			int labelVerticalLocation = (Screen.FromControl(this).Bounds.Height / 2) - (labelTimeRemaining.Size.Height / 2);
 
-			if (Settings.Default.ShowImage)
+			if (MainForm.Configuration.ShowImage)
 			{
 				try
 				{
-					pictureBox.Load(Settings.Default.ImagePath);
+					pictureBox.Load(MainForm.Configuration.ImagePath);
 					labelVerticalLocation += (pictureBox.Image.Height / 2) + labelTimeRemaining.Size.Height;
 				}
 				catch (Exception ex)
@@ -40,6 +39,7 @@
 
 			labelTimeRemaining.Location = new Point(0, labelVerticalLocation);
 
+			secondsRemaining = MainForm.Configuration.BreakDuration * 60;
 			SetTimeRemainingText();
 
 			timerCountdown.Enabled = true;
@@ -56,16 +56,8 @@
 		private void SetTimeRemainingText()
 		{
 			TimeSpan t = TimeSpan.FromSeconds(secondsRemaining);
-			string timeText = string.Format("{0:D2}:{1:D2}", t.Minutes, t.Seconds);
+			string timeText = string.Format("{0:D2}:{1:D2}", (int)t.TotalMinutes, t.Seconds);
 			labelTimeRemaining.Text = timeText;
-		}
-
-		private void PictureBoxDoubleClick(object sender, EventArgs e)
-		{
-			var me = (MouseEventArgs)e;
-
-			if (me.X < 10 && me.Y < 10)
-				Close();
 		}
 	}
 }

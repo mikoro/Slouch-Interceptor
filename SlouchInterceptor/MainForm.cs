@@ -6,10 +6,10 @@
 	using System.Reflection;
 	using System.Windows.Forms;
 	using Microsoft.Win32;
-	using Mironworks.SlouchInterceptor.Properties;
 
 	public partial class MainForm : Form
 	{
+		public static Configuration Configuration = Configuration.Load();
 		private readonly IdleDetector idleDetector = new IdleDetector();
 		private readonly Timer showOverlayTimer = new Timer();
 		private ConfigurationForm configurationForm = new ConfigurationForm();
@@ -21,11 +21,11 @@
 		{
 			InitializeComponent();
 
-			if (Settings.Default.FirstRun)
+			if (Configuration.FirstRun)
 			{
 				notifyIcon.ShowBalloonTip(0, "Slouch Interceptor", "Slouch Interceptor is running", ToolTipIcon.None);
-				Settings.Default.FirstRun = false;
-				Settings.Default.Save();
+				Configuration.FirstRun = false;
+				Configuration.Save();
 			}
 
 			showOverlayTimer.Tick += ShowOverlayTimerOnTick;
@@ -33,12 +33,6 @@
 			idleDetector.IdleStart += OnIdleStart;
 			idleDetector.IdleStop += OnIdleStop;
 			SystemEvents.PowerModeChanged += OnPowerModeChanged;
-
-			/*
-			Settings.Default.BreakInterval = 1;
-			Settings.Default.BreakDuration = 5;
-			Settings.Default.IdleThreshold = 1;
-			*/
 
 			RestartShowOverlayTimer();
 		}
@@ -72,7 +66,7 @@
 			Trace.WriteLine("Restart show overlay timer");
 
 			showOverlayTimer.Stop();
-			showOverlayTimer.Interval = Settings.Default.BreakInterval * 60 * 1000;
+			showOverlayTimer.Interval = Configuration.BreakInterval * 60 * 1000;
 			showOverlayTimer.Start();
 			showOverlayTimerTickTime = DateTime.Now + TimeSpan.FromMilliseconds(showOverlayTimer.Interval);
 		}
@@ -188,13 +182,21 @@
 		private void ConfigureToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			if (configurationForm.IsDisposed)
+			{
+				configurationForm.FormClosed -= ConfigurationFormOnFormClosed;
 				configurationForm = new ConfigurationForm();
+				configurationForm.FormClosed += ConfigurationFormOnFormClosed;
+			}
 
 			if (!configurationForm.Visible)
 				configurationForm.Show();
 
 			configurationForm.WindowState = FormWindowState.Normal;
 			configurationForm.Focus();
+		}
+
+		private void ConfigurationFormOnFormClosed(object sender, FormClosedEventArgs e)
+		{
 		}
 
 		private void ExitToolStripMenuItemClick(object sender, EventArgs e)

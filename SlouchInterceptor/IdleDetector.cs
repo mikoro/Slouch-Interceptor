@@ -3,12 +3,11 @@
 	using System;
 	using System.Runtime.InteropServices;
 	using System.Windows.Forms;
-	using Mironworks.SlouchInterceptor.Properties;
 
 	internal class IdleDetector
 	{
 		private readonly Timer timer = new Timer();
-
+		
 		public IdleDetector()
 		{
 			timer.Interval = 1000;
@@ -23,14 +22,14 @@
 
 		private void TimerOnTick(object sender, EventArgs e)
 		{
-			if (GetLastInputTime() >= (Settings.Default.IdleThreshold * 60) && !IsIdle)
+			if (GetLastInputTime() >= (MainForm.Configuration.IdleDetectionThreshold * 60) && !IsIdle)
 			{
 				IsIdle = true;
 
 				if (IdleStart != null)
 					IdleStart(this, null);
 			}
-			else if (IsIdle && GetLastInputTime() < (Settings.Default.IdleThreshold * 60))
+			else if (IsIdle && GetLastInputTime() < (MainForm.Configuration.IdleDetectionThreshold * 60))
 			{
 				IsIdle = false;
 

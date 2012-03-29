@@ -47,7 +47,6 @@
 			this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pictureBox.TabIndex = 0;
 			this.pictureBox.TabStop = false;
-			this.pictureBox.DoubleClick += new System.EventHandler(this.PictureBoxDoubleClick);
 			// 
 			// timerCountdown
 			// 
@@ -86,7 +85,6 @@
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Slouch Interceptor";
-			this.TopMost = true;
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.Load += new System.EventHandler(this.OverlayFormLoad);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

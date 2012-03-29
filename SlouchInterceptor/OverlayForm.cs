@@ -16,6 +16,8 @@
 			InitializeComponent();
 		}
 
+		public bool CanClose { get; set; }
+
 		private void OverlayFormLoad(object sender, EventArgs e)
 		{
 			labelTimeRemaining.Size = new Size(Screen.FromControl(this).Bounds.Width, 100);
@@ -48,7 +50,10 @@
 		private void TimerCountdownTick(object sender, EventArgs e)
 		{
 			if (--secondsRemaining <= -1)
+			{
+				CanClose = true;
 				Close();
+			}
 
 			SetTimeRemainingText();
 		}
@@ -58,6 +63,12 @@
 			TimeSpan t = TimeSpan.FromSeconds(secondsRemaining);
 			string timeText = string.Format("{0:D2}:{1:D2}", (int)t.TotalMinutes, t.Seconds);
 			labelTimeRemaining.Text = timeText;
+		}
+
+		private void OverlayFormFormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (MainForm.Configuration.DisableClose && !CanClose)
+				e.Cancel = true;
 		}
 	}
 }

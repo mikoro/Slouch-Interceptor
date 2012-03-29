@@ -59,6 +59,7 @@
 		{
 			Trace.WriteLine("Close overlay form");
 
+			overlayForm.CanClose = true;
 			overlayForm.Close();
 		}
 
@@ -133,10 +134,12 @@
 			if (showOverlayTimerTickTime > DateTime.Now)
 				t = showOverlayTimerTickTime - DateTime.Now;
 
-			string text = "Timer is disabled";
+			string text;
 
 			if (isTimerEnabled)
-				text = string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds);
+				text = t.TotalSeconds > 0 ? string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds) : "You should be on a break ;)";
+			else
+				text = "Timer is disabled";
 
 			notifyIcon.Text = "Slouch Interceptor\n" + text;
 			remainingTextToolStripMenuItem.Text = text;
@@ -198,13 +201,23 @@
 
 		private void ConfigurationFormOnFormClosed(object sender, FormClosedEventArgs e)
 		{
-			RestartShowOverlayTimer();
+			if (!overlayForm.Visible && isTimerEnabled)
+				RestartShowOverlayTimer();
+		}
+
+		private void MainFormVisibleChanged(object sender, EventArgs e)
+		{
+			Visible = false;
+		}
+
+		private void MainFormFormClosing(object sender, FormClosingEventArgs e)
+		{
+			CloseOverlayForm();
 		}
 
 		private void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			Close();
-			Application.Exit();
 		}
 	}
 }

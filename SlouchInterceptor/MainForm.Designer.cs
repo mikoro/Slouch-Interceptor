@@ -132,6 +132,8 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Slouch Interceptor";
 			this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
+			this.VisibleChanged += new System.EventHandler(this.MainFormVisibleChanged);
 			this.contextMenuStrip.ResumeLayout(false);
 			this.ResumeLayout(false);
 

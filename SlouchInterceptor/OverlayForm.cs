@@ -45,6 +45,14 @@
 			SetTimeRemainingText();
 
 			timerCountdown.Enabled = true;
+
+			if (MainForm.Configuration.DisableFocusChange)
+				timerActivate.Enabled = true;
+		}
+
+		private void TimerActivateTick(object sender, EventArgs e)
+		{
+			Activate();
 		}
 
 		private void TimerCountdownTick(object sender, EventArgs e)

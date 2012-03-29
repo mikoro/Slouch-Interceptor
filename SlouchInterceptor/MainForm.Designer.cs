@@ -131,6 +131,7 @@
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Slouch Interceptor";
+			this.TopMost = true;
 			this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormFormClosing);
 			this.VisibleChanged += new System.EventHandler(this.MainFormVisibleChanged);

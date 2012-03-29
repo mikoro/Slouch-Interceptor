@@ -36,6 +36,9 @@
 		[Description("Make closing the overlay window a little bit harder")]
 		public bool DisableClose { get; set; }
 
+		[Description("Try to keep the overlay window topmost all the time")]
+		public bool DisableFocusChange { get; set; }
+
 		[Browsable(false)]
 		public bool FirstRun { get; set; }
 

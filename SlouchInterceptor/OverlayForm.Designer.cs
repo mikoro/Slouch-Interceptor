@@ -33,6 +33,7 @@
 			this.pictureBox = new System.Windows.Forms.PictureBox();
 			this.timerCountdown = new System.Windows.Forms.Timer(this.components);
 			this.labelTimeRemaining = new System.Windows.Forms.Label();
+			this.timerActivate = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -64,6 +65,10 @@
 			this.labelTimeRemaining.TabIndex = 1;
 			this.labelTimeRemaining.Text = "00:00";
 			this.labelTimeRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// timerActivate
+			// 
+			this.timerActivate.Tick += new System.EventHandler(this.TimerActivateTick);
 			// 
 			// OverlayForm
 			// 
@@ -98,6 +103,7 @@
 		private System.Windows.Forms.PictureBox pictureBox;
 		private System.Windows.Forms.Timer timerCountdown;
 		private System.Windows.Forms.Label labelTimeRemaining;
+		private System.Windows.Forms.Timer timerActivate;
 	}
 }
 

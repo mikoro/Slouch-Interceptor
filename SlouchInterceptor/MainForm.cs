@@ -4,6 +4,7 @@
 	using System.ComponentModel;
 	using System.Diagnostics;
 	using System.Reflection;
+	using System.Runtime.InteropServices;
 	using System.Windows.Forms;
 	using Microsoft.Win32;
 
@@ -37,6 +38,9 @@
 
 			RestartShowOverlayTimer();
 		}
+
+		[DllImport("user32.dll")]
+		public static extern void LockWorkStation();
 
 		private void ShowOverlayForm()
 		{
@@ -91,6 +95,9 @@
 		{
 			if (!idleDetector.IsIdle && isTimerEnabled)
 				RestartShowOverlayTimer();
+
+			if (idleDetector.IsIdle && Configuration.AutoLock)
+				LockWorkStation();
 		}
 
 		private void OnIdleStart(object sender, EventArgs e)

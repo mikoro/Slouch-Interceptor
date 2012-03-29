@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AutoLock>true</AutoLock>
+  <DisableClose>true</DisableClose>
+  <DisableFocusChange>true</DisableFocusChange>
+  <FirstRun>true</FirstRun>
+  <BreakDuration>5</BreakDuration>
+  <BreakInterval>45</BreakInterval>
+  <IdleDetectionThreshold>5</IdleDetectionThreshold>
+  <ShowImage>true</ShowImage>
+  <ImagePath>Images\SlouchInterceptor.png</ImagePath>
+</Configuration>

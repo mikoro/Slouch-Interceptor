@@ -22,6 +22,7 @@
 		{
 			AutoLock = true;
 			DisableClose = true;
+			DisableFocusChange = true;
 			FirstRun = true;
 			ShowImage = true;
 			breakDuration = 5;

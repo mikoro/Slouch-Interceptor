@@ -40,7 +40,7 @@
 		}
 
 		[DllImport("user32.dll")]
-		public static extern void LockWorkStation();
+		private static extern void LockWorkStation();
 
 		private void ShowOverlayForm()
 		{

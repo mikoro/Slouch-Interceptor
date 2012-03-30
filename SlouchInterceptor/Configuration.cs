@@ -14,20 +14,20 @@
 
 		private static readonly ILog Log = LogManager.GetLogger(typeof(Configuration).Name);
 
-		private int breakDuration;
-		private int breakInterval;
-		private int idleDetectionThreshold;
+		private double breakDuration;
+		private double breakInterval;
+		private double idleDetectionThreshold;
 
 		public Configuration()
 		{
-			AutoLock = true;
-			DisableClose = true;
-			DisableFocusChange = true;
+			AutoLock = false;
+			DisableClose = false;
+			DisableSwitch = false;
 			FirstRun = true;
 			ShowImage = true;
 			breakDuration = 5;
-			breakInterval = 45;
-			idleDetectionThreshold = 5;
+			breakInterval = 55;
+			idleDetectionThreshold = 10;
 			ImagePath = @"Images\SlouchInterceptor.png";
 		}
 
@@ -37,21 +37,21 @@
 		[Description("Make closing the overlay window a little bit harder")]
 		public bool DisableClose { get; set; }
 
-		[Description("Try to keep the overlay window topmost all the time")]
-		public bool DisableFocusChange { get; set; }
+		[Description("Make closing the overlay window really hard (especially if combined with DisableClose)")]
+		public bool DisableSwitch { get; set; }
 
 		[Browsable(false)]
 		public bool FirstRun { get; set; }
 
 		[Description("The duration of a break in minutes")]
 		[Category("Timings")]
-		public int BreakDuration
+		public double BreakDuration
 		{
 			get { return breakDuration; }
-			
+
 			set
 			{
-				if (value < 1)
+				if (value <= 0)
 					value = 1;
 
 				if (value > 99)
@@ -63,13 +63,13 @@
 
 		[Description("The interval between the breaks in minutes")]
 		[Category("Timings")]
-		public int BreakInterval
+		public double BreakInterval
 		{
 			get { return breakInterval; }
 
 			set
 			{
-				if (value < 1)
+				if (value <= 0)
 					value = 1;
 
 				if (value > 9999)
@@ -81,13 +81,13 @@
 
 		[Description("Time in minutes after which the user is deemed idle and the timer is restarted")]
 		[Category("Timings")]
-		public int IdleDetectionThreshold
+		public double IdleDetectionThreshold
 		{
 			get { return idleDetectionThreshold; }
 
 			set
 			{
-				if (value < 1)
+				if (value <= 0)
 					value = 1;
 
 				if (value > 99)

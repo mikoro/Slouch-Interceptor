@@ -72,7 +72,7 @@
 			Trace.WriteLine("Restart show overlay timer");
 
 			showOverlayTimer.Stop();
-			showOverlayTimer.Interval = Configuration.BreakInterval * 60 * 1000;
+			showOverlayTimer.Interval = (int)(Configuration.BreakInterval * 60.0 * 1000.0);
 			showOverlayTimer.Start();
 			showOverlayTimerTickTime = DateTime.Now + TimeSpan.FromMilliseconds(showOverlayTimer.Interval);
 		}

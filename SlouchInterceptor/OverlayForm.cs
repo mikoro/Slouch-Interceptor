@@ -41,17 +41,20 @@
 
 			labelTimeRemaining.Location = new Point(0, labelVerticalLocation);
 
-			secondsRemaining = MainForm.Configuration.BreakDuration * 60;
+			secondsRemaining = (int)(MainForm.Configuration.BreakDuration * 60.0);
 			SetTimeRemainingText();
 
-			timerCountdown.Enabled = true;
+			timerCountdown.Start();
 
-			if (MainForm.Configuration.DisableFocusChange)
-				timerActivate.Enabled = true;
+			if (MainForm.Configuration.DisableSwitch)
+				timerForceFocus.Start();
 		}
 
-		private void TimerActivateTick(object sender, EventArgs e)
+		private void TimerForceFocusTick(object sender, EventArgs e)
 		{
+			TopMost = true;
+			BringToFront();
+			Focus();
 			Activate();
 		}
 

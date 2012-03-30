@@ -27,7 +27,7 @@
 
 		private void TimerOnTick(object sender, EventArgs e)
 		{
-			if (GetLastInputTime() >= (MainForm.Configuration.IdleDetectionThreshold * 60) && !IsIdle)
+			if (GetLastInputTime() >= (int)(MainForm.Configuration.IdleDetectionThreshold * 60.0) && !IsIdle)
 			{
 				IsIdle = true;
 

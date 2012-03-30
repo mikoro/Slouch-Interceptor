@@ -31,7 +31,7 @@
 			ImagePath = @"Images\SlouchInterceptor.png";
 		}
 
-		[Description("If the computer is idle when a break ends, the computer will be locked")]
+		[Description("Lock the computer when the break ends")]
 		public bool AutoLock { get; set; }
 
 		[Description("Make closing the overlay window a little bit harder")]
@@ -79,7 +79,7 @@
 			}
 		}
 
-		[Description("Time in minutes after which the user is deemed idle")]
+		[Description("Time in minutes after which the user is deemed idle and the timer is restarted")]
 		[Category("Timings")]
 		public int IdleDetectionThreshold
 		{

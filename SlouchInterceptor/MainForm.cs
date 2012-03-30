@@ -96,7 +96,7 @@
 			if (!idleDetector.IsIdle && isTimerEnabled)
 				RestartShowOverlayTimer();
 
-			if (idleDetector.IsIdle && Configuration.AutoLock)
+			if (Configuration.AutoLock)
 				LockWorkStation();
 		}
 

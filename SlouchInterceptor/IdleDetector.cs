@@ -17,6 +17,11 @@
 
 		public bool IsIdle { get; private set; }
 
+		public int IdleTime
+		{
+			get { return GetLastInputTime(); }
+		}
+
 		public event EventHandler IdleStart;
 		public event EventHandler IdleStop;
 

@@ -7,19 +7,16 @@
 	using System.Xml.Serialization;
 	using log4net;
 
-	internal sealed class Configuration
+	public sealed class Configuration
 	{
-		private static readonly string ConfigurationFilePath =
-			Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
-			             @"Mironworks\Slouch Interceptor\Configuration.xml");
-
 		private static readonly ILog Log = LogManager.GetLogger(typeof(Configuration).Name);
+		private static readonly string ConfigurationFilePath = Path.Combine(Program.DataRootDirectory, @"Configuration.xml");
 
 		private double breakDuration;
 		private double breakInterval;
 		private double idleDetectionThreshold;
 
-		private Configuration()
+		public Configuration()
 		{
 			AutoLock = false;
 			DisableClose = false;
@@ -133,6 +130,8 @@
 		public void Save()
 		{
 			Trace.WriteLine("Saving configuration");
+
+			Directory.CreateDirectory(Program.DataRootDirectory);
 
 			try
 			{

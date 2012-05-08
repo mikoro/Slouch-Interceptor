@@ -1,12 +1,17 @@
 ﻿namespace Mironworks.SlouchInterceptor
 {
 	using System;
+	using System.IO;
 	using System.Windows.Forms;
 	using log4net;
 
 	internal static class Program
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(Program).Name);
+
+		public static readonly string DataRootDirectory = Path.Combine(
+		                                                               Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
+		                                                               @"Mironworks\Slouch Interceptor");
 
 		[STAThread]
 		private static void Main()

@@ -32,19 +32,19 @@
 			ImagePath = @"Images\SlouchInterceptor.png";
 		}
 
-		[Description("Lock the computer when the break ends")]
+		[Description("Whether the computer is locked after the break ends")]
 		public bool AutoLock { get; set; }
 
-		[Description("Make closing the overlay window a little bit harder")]
+		[Description("Makes the overlay windows ignore normal closing attempts")]
 		public bool DisableClose { get; set; }
 
-		[Description("Make closing the overlay window really hard (especially if combined with DisableClose)")]
+		[Description("Keeps the overlay window topmost all the time")]
 		public bool DisableSwitch { get; set; }
 
 		[Browsable(false)]
 		public bool FirstRun { get; set; }
 
-		[Description("The duration of a break in minutes")]
+		[Description("The duration of the break in minutes")]
 		[Category("Timings")]
 		public double BreakDuration
 		{
@@ -62,7 +62,7 @@
 			}
 		}
 
-		[Description("The interval between the breaks in minutes")]
+		[Description("The time between the breaks in minutes")]
 		[Category("Timings")]
 		public double BreakInterval
 		{
@@ -80,7 +80,7 @@
 			}
 		}
 
-		[Description("Time in minutes after which the user is deemed idle and the timer is restarted")]
+		[Description("The idle time in minutes after which the break interval timer is reset")]
 		[Category("Timings")]
 		public double IdleDetectionThreshold
 		{

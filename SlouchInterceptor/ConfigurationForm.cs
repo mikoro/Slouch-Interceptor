@@ -3,7 +3,7 @@
 	using System;
 	using System.Windows.Forms;
 
-	public partial class ConfigurationForm : Form
+	public sealed partial class ConfigurationForm : Form
 	{
 		public ConfigurationForm()
 		{

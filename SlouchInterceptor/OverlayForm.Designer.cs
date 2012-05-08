@@ -1,6 +1,6 @@
 ﻿namespace Mironworks.SlouchInterceptor
 {
-	partial class OverlayForm
+	internal sealed partial class OverlayForm
 	{
 		/// <summary>
 		/// Required designer variable.

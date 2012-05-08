@@ -72,7 +72,6 @@
     <Compile Include="ConfigurationForm.Designer.cs">
       <DependentUpon>ConfigurationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomTraceListener.cs" />
     <Compile Include="IdleDetector.cs" />
     <Compile Include="OverlayForm.cs">
       <SubType>Form</SubType>

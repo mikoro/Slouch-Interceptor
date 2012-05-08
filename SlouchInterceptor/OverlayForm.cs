@@ -6,7 +6,7 @@
 	using System.Windows.Forms;
 	using log4net;
 
-	public partial class OverlayForm : Form
+	internal sealed partial class OverlayForm : Form
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(OverlayForm).Name);
 		private int secondsRemaining;
@@ -16,7 +16,7 @@
 			InitializeComponent();
 		}
 
-		public bool CanClose { get; set; }
+		public bool CanClose { private get; set; }
 
 		private void OverlayFormLoad(object sender, EventArgs e)
 		{

@@ -1,6 +1,6 @@
 ﻿namespace Mironworks.SlouchInterceptor
 {
-	partial class ConfigurationForm
+	sealed partial class ConfigurationForm
 	{
 		/// <summary>
 		/// Required designer variable.

@@ -7,10 +7,11 @@
 	using System.Xml.Serialization;
 	using log4net;
 
-	public class Configuration
+	internal sealed class Configuration
 	{
-		private static readonly string ConfigurationFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-		                                                                    @"Mironworks\Slouch Interceptor\Configuration.xml");
+		private static readonly string ConfigurationFilePath =
+			Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
+			             @"Mironworks\Slouch Interceptor\Configuration.xml");
 
 		private static readonly ILog Log = LogManager.GetLogger(typeof(Configuration).Name);
 
@@ -18,15 +19,15 @@
 		private double breakInterval;
 		private double idleDetectionThreshold;
 
-		public Configuration()
+		private Configuration()
 		{
 			AutoLock = false;
 			DisableClose = false;
 			DisableSwitch = false;
 			FirstRun = true;
 			ShowImage = true;
-			breakDuration = 5;
-			breakInterval = 55;
+			breakDuration = 3;
+			breakInterval = 57;
 			idleDetectionThreshold = 10;
 			ImagePath = @"Images\SlouchInterceptor.png";
 		}

@@ -3,29 +3,21 @@
 	using System;
 	using System.Windows.Forms;
 	using log4net;
-	using log4net.Config;
 
-	internal class Program
+	internal static class Program
 	{
 		private static readonly ILog Log = LogManager.GetLogger(typeof(Program).Name);
 
 		[STAThread]
 		private static void Main()
 		{
-			new Program().Run();
-		}
-
-		public void Run()
-		{
-			XmlConfigurator.Configure();
-
 			Log.Debug("Starting");
+
+			AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
-			AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
-
 			Application.Run(new MainForm());
 
 			Log.Debug("Stopping");

@@ -4,10 +4,10 @@
 	using System.Runtime.InteropServices;
 	using System.Windows.Forms;
 
-	internal class IdleDetector
+	internal sealed class IdleDetector
 	{
 		private readonly Timer timer = new Timer();
-		
+
 		public IdleDetector()
 		{
 			timer.Interval = 1000;
@@ -16,11 +16,6 @@
 		}
 
 		public bool IsIdle { get; private set; }
-
-		public int IdleTime
-		{
-			get { return GetLastInputTime(); }
-		}
 
 		public event EventHandler IdleStart;
 		public event EventHandler IdleStop;

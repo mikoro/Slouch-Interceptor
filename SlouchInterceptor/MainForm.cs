@@ -8,9 +8,9 @@
 	using System.Windows.Forms;
 	using Microsoft.Win32;
 
-	public partial class MainForm : Form
+	internal sealed partial class MainForm : Form
 	{
-		public static Configuration Configuration = Configuration.Load();
+		public static readonly Configuration Configuration = Configuration.Load();
 		private readonly IdleDetector idleDetector = new IdleDetector();
 		private readonly Timer showOverlayTimer = new Timer();
 		private ConfigurationForm configurationForm = new ConfigurationForm();
@@ -144,7 +144,9 @@
 			string text;
 
 			if (isTimerEnabled)
-				text = t.TotalSeconds > 0 ? string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds) : "You should be on a break ;)";
+				text = t.TotalSeconds > 0
+				       	? string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds)
+				       	: "You should be on a break ;)";
 			else
 				text = "Timer is disabled";
 

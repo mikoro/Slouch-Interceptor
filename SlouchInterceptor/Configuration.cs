@@ -14,6 +14,7 @@
 
 		private double breakDuration;
 		private double breakInterval;
+		private double breakNotificationTime;
 		private double idleDetectionThreshold;
 
 		public Configuration()
@@ -21,11 +22,13 @@
 			AutoLock = false;
 			DisableClose = false;
 			DisableSwitch = false;
+			EnableBreakNotification = true;
 			FirstRun = true;
 			ShowImage = true;
-			breakDuration = 3;
-			breakInterval = 57;
-			idleDetectionThreshold = 10;
+			BreakDuration = 3;
+			BreakInterval = 57;
+			IdleDetectionThreshold = 10;
+			BreakNotificationTime = 0.25;
 			ImagePath = @"Images\SlouchInterceptor.png";
 		}
 
@@ -38,6 +41,9 @@
 		[Description("Keeps the overlay window topmost all the time")]
 		public bool DisableSwitch { get; set; }
 
+		[Description("Shows a balloon tip notification before the actual break begins")]
+		public bool EnableBreakNotification { get; set; }
+
 		[Browsable(false)]
 		public bool FirstRun { get; set; }
 
@@ -46,17 +52,7 @@
 		public double BreakDuration
 		{
 			get { return breakDuration; }
-
-			set
-			{
-				if (value <= 0)
-					value = 1;
-
-				if (value > 99)
-					value = 99;
-
-				breakDuration = value;
-			}
+			set { breakDuration = (value < 0) ? 0 : value; }
 		}
 
 		[Description("The time between the breaks in minutes")]
@@ -64,17 +60,7 @@
 		public double BreakInterval
 		{
 			get { return breakInterval; }
-
-			set
-			{
-				if (value <= 0)
-					value = 1;
-
-				if (value > 9999)
-					value = 9999;
-
-				breakInterval = value;
-			}
+			set { breakInterval = (value < 0) ? 0 : value; }
 		}
 
 		[Description("The idle time in minutes after which the break interval timer is reset")]
@@ -82,17 +68,15 @@
 		public double IdleDetectionThreshold
 		{
 			get { return idleDetectionThreshold; }
+			set { idleDetectionThreshold = (value < 0) ? 0 : value; }
+		}
 
-			set
-			{
-				if (value <= 0)
-					value = 1;
-
-				if (value > 99)
-					value = 99;
-
-				idleDetectionThreshold = value;
-			}
+		[Description("The time in minutes before the actual break when a notification should be shown")]
+		[Category("Timings")]
+		public double BreakNotificationTime
+		{
+			get { return breakNotificationTime; }
+			set { breakNotificationTime = (value < 0) ? 0 : value; }
 		}
 
 		[Description("Should an image be shown with the countdown")]

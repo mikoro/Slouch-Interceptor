@@ -45,8 +45,8 @@
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="LICENSE" Component_="SlouchInterceptor.exe.config" FileName="LICENSE.txt" Attributes="0" SourcePath="..\..\..\Dropbox\Koodit\C#\SlouchInterceptor\LICENSE" SelfReg="false"/>
-    <ROW File="Readme.html" Component_="Readme.html" FileName="Readme~1.htm|Readme.html" Attributes="0" SourcePath="Readme.html" SelfReg="false" NextFile="LICENSE"/>
+    <ROW File="License.txt" Component_="SlouchInterceptor.exe.config" FileName="License.txt" Attributes="0" SourcePath="..\License.txt" SelfReg="false"/>
+    <ROW File="Readme.html" Component_="Readme.html" FileName="Readme~1.htm|Readme.html" Attributes="0" SourcePath="Readme.html" SelfReg="false" NextFile="License.txt"/>
     <ROW File="SlouchInterceptor.exe" Component_="SlouchInterceptor.exe" FileName="Slouch~1.exe|Slouch Interceptor.exe" Attributes="0" SourcePath="..\SlouchInterceptor\bin\Release\Slouch Interceptor.exe" SelfReg="false" NextFile="SlouchInterceptor.exe.config"/>
     <ROW File="SlouchInterceptor.exe.config" Component_="SlouchInterceptor.exe.config" FileName="Slouch~1.con|Slouch Interceptor.exe.config" Attributes="0" SourcePath="..\SlouchInterceptor\bin\Release\Slouch Interceptor.exe.config" SelfReg="false" NextFile="log4net.dll_1"/>
     <ROW File="SlouchInterceptor.png" Component_="SlouchInterceptor.png" FileName="Slouch~1.png|SlouchInterceptor.png" Attributes="0" SourcePath="..\SlouchInterceptor\Images\SlouchInterceptor.png" SelfReg="false" NextFile="Readme.html"/>

@@ -1,6 +1,7 @@
 ﻿namespace Mironworks.SlouchInterceptor
 {
 	using System;
+	using System.IO;
 	using System.Windows.Forms;
 	using log4net;
 

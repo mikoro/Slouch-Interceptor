@@ -47,7 +47,7 @@
 		[Browsable(false)]
 		public bool FirstRun { get; set; }
 
-		[Description("The duration of the break in minutes")]
+		[Description("Duration of the break in minutes")]
 		[Category("Timings")]
 		public double BreakDuration
 		{
@@ -55,7 +55,7 @@
 			set { breakDuration = (value < 0) ? 0 : value; }
 		}
 
-		[Description("The time between the breaks in minutes")]
+		[Description("Time between the breaks in minutes")]
 		[Category("Timings")]
 		public double BreakInterval
 		{
@@ -63,7 +63,7 @@
 			set { breakInterval = (value < 0) ? 0 : value; }
 		}
 
-		[Description("The idle time in minutes after which the break interval timer is reset")]
+		[Description("Idle time in minutes after which the break interval timer is reset")]
 		[Category("Timings")]
 		public double IdleDetectionThreshold
 		{
@@ -71,7 +71,7 @@
 			set { idleDetectionThreshold = (value < 0) ? 0 : value; }
 		}
 
-		[Description("The time in minutes before the actual break when a notification should be shown")]
+		[Description("Time in minutes when a notification should be shown before the actual break")]
 		[Category("Timings")]
 		public double BreakNotificationTime
 		{

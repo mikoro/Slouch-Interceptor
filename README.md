@@ -10,7 +10,7 @@ At least Windows XP, .NET Framework 2.0 and motivation to obey the program...
 
 ## Download / Installation
 
-Download and install the latest version: [Slouch Interceptor 1.2.1](https://bitbucket.org/mikoro/slouchinterceptor/downloads/Slouch%20Interceptor%201.2.1.msi).
+Download and install the latest version: [Slouch Interceptor 1.3.0](https://bitbucket.org/mikoro/slouchinterceptor/downloads/Slouch%20Interceptor%201.3.0.msi).
 
 Older versions can be found from the [downloads page](https://bitbucket.org/mikoro/slouchinterceptor/downloads).
 
@@ -33,7 +33,7 @@ Older versions can be found from the [downloads page](https://bitbucket.org/miko
 
 ## Version history
 
-### 1.3.0 (5/xx/2012)
+### 1.3.0 (5/9/2012)
 
 - Added support for AutoLock
 - Added support for DisableClose
@@ -41,6 +41,7 @@ Older versions can be found from the [downloads page](https://bitbucket.org/miko
 - Added support for BreakNotification
 - Changed the configuration window interface
 - Added support for minute fractions in the configuration options
+- Added fadein effect
 
 ### 1.2.1 (3/21/2012)
 

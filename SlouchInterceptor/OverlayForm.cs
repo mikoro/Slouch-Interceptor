@@ -44,10 +44,10 @@
 			secondsRemaining = (int)(MainForm.Configuration.BreakDuration * 60.0);
 			SetTimeRemainingText();
 
-			timerCountdown.Start();
-
 			if (MainForm.Configuration.DisableSwitch)
 				timerForceFocus.Start();
+
+			timerFadeIn.Start();
 		}
 
 		private void TimerForceFocusTick(object sender, EventArgs e)
@@ -80,6 +80,19 @@
 		{
 			if (MainForm.Configuration.DisableClose && !CanClose)
 				e.Cancel = true;
+		}
+
+		private void TimerFadeInTick(object sender, EventArgs e)
+		{
+			Opacity += 0.02;
+
+			if (Opacity >= 0.9)
+			{
+				Opacity = 0.9;
+				timerFadeIn.Stop();
+				TimerCountdownTick(null, null);
+				timerCountdown.Start();
+			}
 		}
 	}
 }

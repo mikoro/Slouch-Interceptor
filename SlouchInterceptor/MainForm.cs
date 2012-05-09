@@ -31,7 +31,6 @@
 			}
 
 			showOverlayTimer.Tick += ShowOverlayTimerOnTick;
-			overlayForm.FormClosed += OverlayFormOnFormClosed;
 			configurationForm.FormClosed += ConfigurationFormOnFormClosed;
 			idleDetector.IdleStart += OnIdleStart;
 			idleDetector.IdleStop += OnIdleStop;
@@ -50,14 +49,13 @@
 			StopShowOverlayTimer();
 			showOverlayTimerTickTime = DateTime.Now;
 
-			if (overlayForm.IsDisposed)
-			{
-				overlayForm.FormClosed -= OverlayFormOnFormClosed;
-				overlayForm = new OverlayForm();
-				overlayForm.FormClosed += OverlayFormOnFormClosed;
-			}
-
+			overlayForm.Dispose();
+			overlayForm.FormClosed -= OverlayFormOnFormClosed;
+			overlayForm = new OverlayForm();
+			overlayForm.FormClosed += OverlayFormOnFormClosed;
 			overlayForm.Show();
+
+			canShowBreakNotification = false;
 		}
 
 		private void CloseOverlayForm()

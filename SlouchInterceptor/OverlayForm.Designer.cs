@@ -34,6 +34,7 @@
 			this.timerCountdown = new System.Windows.Forms.Timer(this.components);
 			this.labelTimeRemaining = new System.Windows.Forms.Label();
 			this.timerForceFocus = new System.Windows.Forms.Timer(this.components);
+			this.timerFadeIn = new System.Windows.Forms.Timer(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -70,6 +71,11 @@
 			// 
 			this.timerForceFocus.Tick += new System.EventHandler(this.TimerForceFocusTick);
 			// 
+			// timerFadeIn
+			// 
+			this.timerFadeIn.Interval = 33;
+			this.timerFadeIn.Tick += new System.EventHandler(this.TimerFadeInTick);
+			// 
 			// OverlayForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -84,7 +90,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "OverlayForm";
-			this.Opacity = 0.95D;
+			this.Opacity = 0D;
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -104,6 +110,7 @@
 		private System.Windows.Forms.Timer timerCountdown;
 		private System.Windows.Forms.Label labelTimeRemaining;
 		private System.Windows.Forms.Timer timerForceFocus;
+		private System.Windows.Forms.Timer timerFadeIn;
 	}
 }
 

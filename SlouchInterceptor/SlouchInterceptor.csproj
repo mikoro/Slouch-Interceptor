@@ -128,7 +128,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Configuration.xml" />
     <Content Include="Images\SlouchInterceptor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

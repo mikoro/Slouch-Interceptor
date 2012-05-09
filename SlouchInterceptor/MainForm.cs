@@ -15,6 +15,7 @@
 		private readonly Timer showOverlayTimer = new Timer();
 		private ConfigurationForm configurationForm = new ConfigurationForm();
 		private bool isTimerEnabled = true;
+		private bool canShowBreakNotification = true;
 		private OverlayForm overlayForm = new OverlayForm();
 		private DateTime showOverlayTimerTickTime = DateTime.Now;
 
@@ -75,6 +76,8 @@
 			showOverlayTimer.Interval = (int)(Configuration.BreakInterval * 60.0 * 1000.0);
 			showOverlayTimer.Start();
 			showOverlayTimerTickTime = DateTime.Now + TimeSpan.FromMilliseconds(showOverlayTimer.Interval);
+
+			canShowBreakNotification = true;
 		}
 
 		private void StopShowOverlayTimer()
@@ -152,6 +155,12 @@
 
 			notifyIcon.Text = "Slouch Interceptor\n" + text;
 			remainingTextToolStripMenuItem.Text = text;
+
+			if (t.TotalSeconds < (Configuration.BreakNotificationTime * 60.0) && Configuration.EnableBreakNotification && canShowBreakNotification)
+			{
+				notifyIcon.ShowBalloonTip(0, "Slouch Interceptor", "The next break will start shortly...", ToolTipIcon.None);
+				canShowBreakNotification = false;
+			}
 		}
 
 		private void NotifyIconMouseUp(object sender, MouseEventArgs e)

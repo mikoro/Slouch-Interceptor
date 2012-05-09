@@ -1,4 +1,5 @@
-﻿Microsoft Visual Studio Solution File, Format Version 11.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlouchInterceptor", "SlouchInterceptor\SlouchInterceptor.csproj", "{4AC97BA3-4AD3-4CF9-BF17-3713ADFFD67B}"
 EndProject

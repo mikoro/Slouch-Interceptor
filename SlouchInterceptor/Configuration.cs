@@ -32,13 +32,13 @@
 			ImagePath = @"Images\SlouchInterceptor.png";
 		}
 
-		[Description("Whether the computer is locked after the break ends")]
+		[Description("Whether the computer is locked after the break ends (useful if you leave the computer during the break)")]
 		public bool AutoLock { get; set; }
 
-		[Description("Makes the overlay windows ignore normal closing attempts")]
+		[Description("Makes the overlay window ignore normal closing attempts (can be closed with the taskbar context menu)")]
 		public bool DisableClose { get; set; }
 
-		[Description("Keeps the overlay window topmost all the time")]
+		[Description("Keeps the overlay window topmost all the time (combining with DisableClose makes closing the overlay window almost impossible)")]
 		public bool DisableSwitch { get; set; }
 
 		[Description("Shows a balloon tip notification before the actual break begins")]
@@ -47,7 +47,7 @@
 		[Browsable(false)]
 		public bool FirstRun { get; set; }
 
-		[Description("Duration of the break in minutes")]
+		[Description("Duration of the break in minutes (can be fractional)")]
 		[Category("Timings")]
 		public double BreakDuration
 		{
@@ -55,7 +55,7 @@
 			set { breakDuration = (value < 0) ? 0 : value; }
 		}
 
-		[Description("Time between the breaks in minutes")]
+		[Description("Time between the breaks in minutes (can be fractional)")]
 		[Category("Timings")]
 		public double BreakInterval
 		{
@@ -63,7 +63,7 @@
 			set { breakInterval = (value < 0) ? 0 : value; }
 		}
 
-		[Description("Idle time in minutes after which the break interval timer is reset")]
+		[Description("Idle time in minutes after which the break interval timer is reset (you didn't use the computer and the program takes it as a break)")]
 		[Category("Timings")]
 		public double IdleDetectionThreshold
 		{
@@ -71,7 +71,7 @@
 			set { idleDetectionThreshold = (value < 0) ? 0 : value; }
 		}
 
-		[Description("Time in minutes when a notification should be shown before the actual break")]
+		[Description("Time when a notification will be shown (minutes before the actual break)")]
 		[Category("Timings")]
 		public double BreakNotificationTime
 		{

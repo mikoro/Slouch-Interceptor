@@ -149,7 +149,7 @@
 
 			string text;
 
-			if (isTimerEnabled)
+			if (!idleDetector.IsIdle && isTimerEnabled)
 			{
 				text = t.TotalSeconds > 0
 				       	? string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds)

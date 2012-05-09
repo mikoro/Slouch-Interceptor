@@ -13,9 +13,9 @@
 		public static readonly Configuration Configuration = Configuration.Load();
 		private readonly IdleDetector idleDetector = new IdleDetector();
 		private readonly Timer showOverlayTimer = new Timer();
+		private bool canShowBreakNotification = true;
 		private ConfigurationForm configurationForm = new ConfigurationForm();
 		private bool isTimerEnabled = true;
-		private bool canShowBreakNotification = true;
 		private OverlayForm overlayForm = new OverlayForm();
 		private DateTime showOverlayTimerTickTime = DateTime.Now;
 
@@ -72,8 +72,11 @@
 		{
 			Trace.WriteLine("Restart show overlay timer");
 
+			var interval = (int)(Configuration.BreakInterval * 60.0 * 1000.0);
+			interval = (interval <= 0) ? 1 : interval;
+
 			showOverlayTimer.Stop();
-			showOverlayTimer.Interval = (int)(Configuration.BreakInterval * 60.0 * 1000.0);
+			showOverlayTimer.Interval = interval;
 			showOverlayTimer.Start();
 			showOverlayTimerTickTime = DateTime.Now + TimeSpan.FromMilliseconds(showOverlayTimer.Interval);
 
@@ -147,16 +150,19 @@
 			string text;
 
 			if (isTimerEnabled)
+			{
 				text = t.TotalSeconds > 0
 				       	? string.Format("Next break in {0}:{1:D2}:{2:D2}", t.Hours, t.Minutes, t.Seconds)
 				       	: "You should be on a break ;)";
+			}
 			else
 				text = "Timer is disabled";
 
 			notifyIcon.Text = "Slouch Interceptor\n" + text;
 			remainingTextToolStripMenuItem.Text = text;
 
-			if (t.TotalSeconds < (Configuration.BreakNotificationTime * 60.0) && Configuration.EnableBreakNotification && canShowBreakNotification)
+			if (t.TotalSeconds < (Configuration.BreakNotificationTime * 60.0) && Configuration.EnableBreakNotification &&
+			    canShowBreakNotification)
 			{
 				notifyIcon.ShowBalloonTip(0, "Slouch Interceptor", "The next break will start shortly...", ToolTipIcon.None);
 				canShowBreakNotification = false;

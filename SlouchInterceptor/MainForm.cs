@@ -160,7 +160,7 @@
 			remainingTextToolStripMenuItem.Text = text;
 
 			if (t.TotalSeconds < (Configuration.BreakNotificationTime * 60.0) && Configuration.EnableBreakNotification &&
-			    canShowBreakNotification)
+			    canShowBreakNotification && !idleDetector.IsIdle && isTimerEnabled)
 			{
 				notifyIcon.ShowBalloonTip(0, "Slouch Interceptor", "The next break will start shortly...", ToolTipIcon.None);
 				canShowBreakNotification = false;

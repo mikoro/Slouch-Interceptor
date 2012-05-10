@@ -96,6 +96,7 @@
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Slouch Interceptor";
+			this.TopMost = true;
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OverlayFormFormClosing);
 			this.Load += new System.EventHandler(this.OverlayFormLoad);

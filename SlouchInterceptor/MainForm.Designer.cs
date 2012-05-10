@@ -40,6 +40,7 @@
 			this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.timerUpdateRemainingTexts = new System.Windows.Forms.Timer(this.components);
+			this.restartTimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -58,11 +59,12 @@
             this.toolStripSeparator1,
             this.startStopBreakToolStripMenuItem,
             this.disableEnableTimerToolStripMenuItem,
+            this.restartTimerToolStripMenuItem,
             this.configureToolStripMenuItem,
             this.toolStripSeparator3,
             this.exitToolStripMenuItem});
 			this.contextMenuStrip.Name = "contextMenuStrip";
-			this.contextMenuStrip.Size = new System.Drawing.Size(183, 148);
+			this.contextMenuStrip.Size = new System.Drawing.Size(183, 170);
 			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripOpening);
 			// 
 			// remainingTextToolStripMenuItem
@@ -116,6 +118,13 @@
 			this.timerUpdateRemainingTexts.Interval = 1000;
 			this.timerUpdateRemainingTexts.Tick += new System.EventHandler(this.TimerUpdateRemainingTextsTick);
 			// 
+			// restartTimerToolStripMenuItem
+			// 
+			this.restartTimerToolStripMenuItem.Name = "restartTimerToolStripMenuItem";
+			this.restartTimerToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+			this.restartTimerToolStripMenuItem.Text = "Restart timer";
+			this.restartTimerToolStripMenuItem.Click += new System.EventHandler(this.RestartTimerToolStripMenuItemClick);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,5 +161,6 @@
 		private System.Windows.Forms.Timer timerUpdateRemainingTexts;
 		private System.Windows.Forms.ToolStripMenuItem startStopBreakToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem disableEnableTimerToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem restartTimerToolStripMenuItem;
 	}
 }

@@ -181,6 +181,7 @@
 			startStopBreakToolStripMenuItem.Text = overlayForm.Visible ? "Stop break" : "Start break";
 			disableEnableTimerToolStripMenuItem.Text = isTimerEnabled ? "Disable timer" : "Enable timer";
 			configureToolStripMenuItem.Enabled = disableEnableTimerToolStripMenuItem.Enabled = !overlayForm.Visible;
+			restartTimerToolStripMenuItem.Enabled = !overlayForm.Visible && isTimerEnabled;
 		}
 
 		private void StartStopBreakToolStripMenuItemClick(object sender, EventArgs e)
@@ -203,6 +204,12 @@
 				RestartShowOverlayTimer();
 				isTimerEnabled = true;
 			}
+		}
+
+		private void RestartTimerToolStripMenuItemClick(object sender, EventArgs e)
+		{
+			RestartShowOverlayTimer();
+			isTimerEnabled = true;
 		}
 
 		private void ConfigureToolStripMenuItemClick(object sender, EventArgs e)
@@ -241,5 +248,7 @@
 		{
 			Close();
 		}
+
+		
 	}
 }

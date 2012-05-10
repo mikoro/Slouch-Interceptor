@@ -10,7 +10,7 @@ At least Windows XP, .NET Framework 2.0 and motivation to obey the program...
 
 ## Download / Installation
 
-Download and install the latest version: [Slouch Interceptor 1.3.0](https://bitbucket.org/mikoro/slouchinterceptor/downloads/Slouch%20Interceptor%201.3.0.msi).
+Download and install the latest version: [Slouch Interceptor 1.3.1](https://bitbucket.org/mikoro/slouchinterceptor/downloads/Slouch%20Interceptor%201.3.1.msi).
 
 Older versions can be found from the [downloads page](https://bitbucket.org/mikoro/slouchinterceptor/downloads).
 
@@ -32,6 +32,11 @@ Older versions can be found from the [downloads page](https://bitbucket.org/miko
     - **EnableBreakNotification** shows a balloon tip notification before the actual break begins
 
 ## Version history
+
+### 1.3.1 (5/10/2012)
+
+- Added restart timer support
+- Fixed some bugs the break notification and overlay window
 
 ### 1.3.0 (5/9/2012)
 

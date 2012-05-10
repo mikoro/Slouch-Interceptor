@@ -28,7 +28,7 @@
 			BreakDuration = 3;
 			BreakInterval = 57;
 			IdleDetectionThreshold = 10;
-			BreakNotificationTime = 0.5;
+			BreakNotificationTime = 0.25;
 			ImagePath = @"Images\SlouchInterceptor.png";
 		}
 

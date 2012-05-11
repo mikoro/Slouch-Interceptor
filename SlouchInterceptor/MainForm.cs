@@ -162,7 +162,7 @@
 			if (t.TotalSeconds < (Configuration.BreakNotificationTime * 60.0) && Configuration.EnableBreakNotification &&
 			    canShowBreakNotification && !idleDetector.IsIdle && isTimerEnabled)
 			{
-				notifyIcon.ShowBalloonTip(0, "Slouch Interceptor", "The next break will start shortly...", ToolTipIcon.None);
+				notifyIcon.ShowBalloonTip(15000, "Slouch Interceptor", "The next break will start shortly...", ToolTipIcon.None);
 				canShowBreakNotification = false;
 			}
 		}

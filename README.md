@@ -1,6 +1,6 @@
 # Slouch Interceptor
 
-Slouch Interceptor is a simple program to remind you to take small regular breaks from working at your computer, i.e it intercepts your slouchiness ;)
+Slouch Interceptor is a simple program that reminds you to take small regular breaks from working at your computer, i.e it intercepts your slouchiness ;)
 
 * Author: [Mikko Ronkainen](http://mikkoronkainen.com)
 * Website: [github.com/mikoro/slouch-interceptor](https://github.com/mikoro/slouch-interceptor)
@@ -11,11 +11,11 @@ Slouch Interceptor is a simple program to remind you to take small regular break
 
 At least Windows XP, .NET Framework 2.0 and motivation to obey the program...
 
-## Download / Installation
+## Download
 
-Download and install the latest version: [Slouch Interceptor 1.3.2](https://bitbucket.org/mikoro/slouchinterceptor/downloads/Slouch%20Interceptor%201.3.2.msi).
+Download the latest version: [Slouch Interceptor 1.3.3](https://github.com/mikoro/slouch-interceptor/releases/download/v1.3.2/Slouch.Interceptor.1.3.3.msi).
 
-Older versions can be found from the [downloads page](https://bitbucket.org/mikoro/slouchinterceptor/downloads).
+Older versions can be found from the [releases page](https://github.com/mikoro/slouch-interceptor/releases).
 
 ## Instructions
 
@@ -35,6 +35,10 @@ Older versions can be found from the [downloads page](https://bitbucket.org/miko
     - **EnableBreakNotification** shows a balloon tip notification before the actual break begins
 
 ## Version history
+
+### 1.3.3 (4/10/2014)
+
+- Updated license, readme and setup files
 
 ### 1.3.2 (5/16/2012)
 

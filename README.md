@@ -13,7 +13,7 @@ At least Windows XP, .NET Framework 2.0 and motivation to obey the program...
 
 ## Download
 
-Download the latest version: [Slouch Interceptor 1.3.3](https://github.com/mikoro/slouch-interceptor/releases/download/v1.3.2/Slouch.Interceptor.1.3.3.msi).
+Download the latest version: [Slouch Interceptor 1.3.3](https://github.com/mikoro/slouch-interceptor/releases/download/v1.3.3/Slouch.Interceptor.1.3.3.msi).
 
 Older versions can be found from the [releases page](https://github.com/mikoro/slouch-interceptor/releases).
 

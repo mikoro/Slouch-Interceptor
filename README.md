@@ -1,8 +1,11 @@
 # Slouch Interceptor
 
-## What is it?
+Slouch Interceptor is a simple program to remind you to take small regular breaks from working at your computer, i.e it intercepts your slouchiness ;)
 
-A simple program to remind you to take small regular breaks from working at your computer, i.e it intercepts your slouchiness ;)
+* Author: [Mikko Ronkainen](http://mikkoronkainen.com)
+* Website: [github.com/mikoro/slouch-interceptor](https://github.com/mikoro/slouch-interceptor)
+
+![Screenshot](http://mikoro.github.io/images/slouch-interceptor/readme-screenshot.jpg "Screenshot")
 
 ## Requirements
 
@@ -28,7 +31,7 @@ Older versions can be found from the [downloads page](https://bitbucket.org/miko
     - **BreakNotificationTime** is the time when a notification will be shown (minutes before the actual break) (can be fractional)
     - **AutoLock** sets whether the computer is locked after the break ends (useful if you leave the computer during the break)
     - **DisableClose** makes the overlay window ignore normal closing attempts (can be closed with the taskbar context menu)
-    - **DisableSwitch** keeps the overlay window topmost all the time (combining with DisableClose makes closing the overlay window almost impossible)
+    - **DisableSwitch** keeps the overlay window topmost all the time (combining with DisableClose makes closing the overlay window very difficult)
     - **EnableBreakNotification** shows a balloon tip notification before the actual break begins
 
 ## Version history
@@ -50,7 +53,7 @@ Older versions can be found from the [downloads page](https://bitbucket.org/miko
 - Added support for BreakNotification
 - Changed the configuration window interface
 - Added support for minute fractions in the configuration options
-- Added fadein effect
+- Added fade in effect
 
 ### 1.2.1 (3/21/2012)
 
